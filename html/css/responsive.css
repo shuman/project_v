@@ -1,0 +1,154 @@
+
+@media only screen and (max-width: 767px){
+	
+	.container{
+		width: 100%;
+	}
+
+	.container > .navbar-header, .container > .navbar-collapse,
+	.navbar-fixed-top, .navbar-fixed-bottom, .navbar-static-top{
+		margin-right: 0;
+		margin-left: 0;
+	}
+
+	h1{
+		font-size: 28px;
+	}
+
+	#header{
+		padding: 0;
+	}
+	.head{
+		padding: 10px 0 0;
+	}
+	.logo{
+		top: 15px;
+	}
+
+	.navbar-default{
+		width: 100%;
+	}
+
+	.navbar-default .navbar-collapse, 
+	.navbar-default .navbar-form{
+		background: #fff;
+		padding-bottom: 15px;
+		margin-top: 3px;
+	}
+
+	.navbar-collapse{
+		margin-top: 0;
+	}
+
+	.navbar-nav{
+		margin: 0;
+		text-align: left;
+	}
+
+	.navbar-default .navbar-nav > li > a{
+		padding-left: 22px;
+	}
+
+	.blog_post .read_more{
+		font-size: 14px;
+		padding: 8px 12px 6px; 
+	}
+
+	#footer{
+		text-align: center;
+		margin-bottom: 0;
+	}
+
+	#footer .footer_item{
+		display: inline-block;
+		width: 100%;
+		max-width: 350px;
+		text-align: left;
+	}
+
+	.copyright .f_left,
+	.copyright .f_right{
+	    float: none !important;
+	    text-align: center;
+	}
+	.copyright .footer_menu{
+		text-align: center;
+	}
+	.copyright ul {
+		width: 100%;
+	}
+
+	.scrollup{
+		display: none !important;
+	}
+
+	.blog_container{
+		margin-bottom: 40px;
+	}
+
+}
+
+@media only screen and (max-width: 480px){
+	h1{
+		font-size: 26px;
+	}
+	.blog_post .post_title h2{
+		font-size: 20px;
+	}
+	.blog_post .post_title span{
+		font-size: 10px;
+	}
+	.blog_post p{
+		font-size: 14px;
+		line-height: 22px;
+	}
+	.blog_post .post_title{
+		padding-left: 60px;
+	}
+}
+
+@media only screen and (max-width: 380px){
+
+	h1{
+		font-size: 24px;
+	}
+
+	#footer .footer_logo li{
+		display: inline-block;
+		margin: 10px auto;
+		width: 100%;
+		max-width: 200px;
+	}
+
+	.copyright ul li{
+		margin: 0 10px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+	
+}
+
+
+@media only screen and (min-width:768px){
+	
+	
+}
+
+@media only screen and (min-width:992px){
+	
+}
+
+@media only screen and (min-width:1200px){
+
+	#footer .footer_right,
+	.sideber{
+		width: 266px;
+    	float: right;
+	}
+
+	.blog_container{
+		margin-right: -24px;
+	}
+	
+}
