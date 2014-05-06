@@ -233,8 +233,8 @@ button{
     background-color: #fff;
 }
 
-.navbar-default .navbar-nav > li:hover > a.download,
-.navbar-default .navbar-nav > li > a.download{
+.navbar-default .navbar-nav > li.download:hover > a,
+.navbar-default .navbar-nav > li.download > a{
     background: #18BCB6;
     border-bottom: 3px solid #089792;
     color: #FFFFFF;
@@ -246,7 +246,7 @@ button{
     text-align: center;
     width: 124px;
 }
-.navbar-default .navbar-nav > li:hover > a.download{
+.navbar-default .navbar-nav > li.download:hover > a{
     opacity: 0.9;
 }
 
