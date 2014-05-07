@@ -50,11 +50,6 @@ h1, h2, h3, h4, h5, h6{
 a{
     color: inherit;
     outline: 0;
-    -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
-        -ms-transition: all 0.5s ease-in-out;
-            transition: all 0.5s ease-in-out;
 }
 
 a:active,
@@ -162,11 +157,6 @@ button{
     height: 80px;
     display: block;
     z-index: 100;
-    -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
-        -ms-transition: all 0.5s ease-in-out;
-            transition: all 0.5s ease-in-out;
 }
 
 .head{
@@ -798,7 +788,7 @@ span.tm_top_arrow{
     width: 100%;
     position: absolute;
     right: 0;
-    top: -30px;
+    top: -20px;
 }
 span.tm_top_arrow p{
     width: 100%;
@@ -1246,13 +1236,7 @@ span.tm_top_arrow p{
     right: 20px;
     width: 45px;
     z-index: 9999;
-    opacity: 0.7;
-
-    -webkit-transition: all 0.5s ease-in-out;
-      -moz-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
-        -ms-transition: all 0.5s ease-in-out;
-            transition: all 0.5s ease-in-out;
+    opacity: 0.8;
 }
 
 .scrollup:hover{
