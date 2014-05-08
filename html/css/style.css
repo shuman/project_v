@@ -981,9 +981,14 @@ span.tm_top_arrow p{
     margin-bottom: 15px;
 }
 
+.blog_post .post_content{
+    padding-bottom: 35px;
+}
+
 .blog_post .read_more{
     display: inline-block;
     text-transform: uppercase;
+    float: right;
 }
 
 .blog_content{
@@ -1042,6 +1047,9 @@ span.tm_top_arrow p{
     border-bottom: 1px solid #ececec;
     padding-bottom: 15px;
 }
+.widget:last-child{
+    border-bottom: none;
+}
 
 .widget h2{
     position: relative;
@@ -1053,7 +1061,7 @@ span.tm_top_arrow p{
 }
 
 .widget h2:before{
-    background: url(../images/sideber_title_iconbox.png) no-repeat center center;
+    background: url(../images/sidebar_title_iconbox.png) no-repeat center center;
     content: " ";
     clear: both;
     height: 42px;
@@ -1068,6 +1076,9 @@ span.tm_top_arrow p{
 }
 .widget.icon_archive h2:before{
     background: url(../images/icon_sbt_archives.png) no-repeat center center;
+}
+.widget.icon_comment h2:before{
+    background: url(../images/icon_sbt_comment.png) no-repeat center center;
 }
 
 .widget ul{
@@ -1088,7 +1099,7 @@ span.tm_top_arrow p{
 }
 
 .widget ul li:before{
-    background: url(../images/sideber_widget_list.png) no-repeat center center;
+    background: url(../images/sidebar_widget_list.png) no-repeat center center;
     content: " ";
     clear: both;
     height: 18px;
@@ -1105,7 +1116,7 @@ span.tm_top_arrow p{
 }
 .widget ul li.current-menu-item:before,
 .widget ul li:hover:before{
-    background: url(../images/sideber_widget_list_hover.png) no-repeat center center;
+    background: url(../images/sidebar_widget_list_hover.png) no-repeat center center;
 }
 
 .widget ul li:after{
@@ -1133,6 +1144,48 @@ span.tm_top_arrow p{
     width: 16px;
     top: 15px;
     right: 10px;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* comment */
+.comment_box{
+    position: relative;
+    display: block;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ECECEC;
+    padding-right: 80px;
+    min-height: 90px;
+}
+
+.comment_box .cmt_pics{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 70px;
+    width: 65px;
+}
+.comment_box .cmt_pics img{
+    display: block;
+    width: 100%;
+}
+
+.comment_box h3{
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.widget .comment_box .post_meta{
+    position: relative;
+    display: block;
+    bottom: auto;
+}
+.widget .comment_box .post_meta span{
+    margin: 0;
+    width: 65px;
 }
 
 /* footer */
