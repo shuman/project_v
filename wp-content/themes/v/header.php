@@ -3,7 +3,7 @@
   <head>
 	<meta charset="utf-8">
 	<title>V</title>
-
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 	<!-- Fevicon -->
@@ -34,7 +34,7 @@
 
   </head>
 
-<body>
+<body <?php body_class($class); ?>>
 
 	<header id="header" class="clearfix">
 		<div class="container">

@@ -1,15 +1,8 @@
 <?php get_header();?>
 	<section id="content" class="clearfix">
-		<div class="featured clearfix">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<h1>WHAT’S NEW TODAY</h1>
-						<div class="slider"></div>
-					</div><!-- /slide -->
-				</div>
-			</div><!-- /container -->
-		</div><!-- /slider -->
+		<header class="page-header">
+			<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfourteen' ), get_search_query() ); ?></h1>
+		</header><!-- .page-header -->
 
 		<div class="blog_content clearfix">
 			<div class="container">
