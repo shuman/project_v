@@ -1,4 +1,80 @@
 
+@media (min-width: 992px) and (max-width: 1199px){
+
+	.ccs_right_arrow,
+	.mdd_right_arrow,
+	.ste_right_arrow{
+		right: -20px;
+	}
+
+	.mdd_left_arrow,
+	.ste_left_arrow{
+		left: -10px;
+	}
+
+	.instraction span p{
+		max-width: 130px;
+	}
+
+	.mdd_right_arrow{
+		width: 360px;
+	}
+	.mdd_left_arrow{
+		width: 270px;
+	}
+
+	.ccs_right_arrow{
+		width: 200px;
+	}
+
+	.tm_right_arrow{
+		right: -20px;
+		width: 280px;
+		top: 220px;
+	}
+
+	.tm_left_arrow{
+		left: -190px;
+		height: 270px;
+	}
+
+	span.tm_top_arrow{
+		top: -35px;
+	}
+
+	.section_content img{
+		max-width: 750px;
+	}
+
+}
+
+
+@media (min-width: 768px) and (max-width: 991px){
+	
+	.comparison_chart .chart_item .btn-default{
+		font-size: 16px;
+	}
+	.comparison_chart .chart_item .chart_title h1{
+		font-size: 24px;
+	}
+
+	.comparison_chart .chart_item h2,
+	.comparison_chart .chart_item .chart_title span{
+		font-size: 20px;
+	}
+
+	.macbook_pro .video_details,
+	.macbook_pro .mac_laptop{
+		margin: 0 auto 30px;
+	}
+
+	.instraction span{
+		display: none;
+	}
+
+}
+
+
 @media only screen and (max-width: 767px){
 	
 	.container{
@@ -21,8 +97,12 @@
 	.head{
 		padding: 10px 0 0;
 	}
-	.logo{
-		top: 15px;
+	#header .logo{
+		top: 20px;
+	}
+
+	.menuber{
+		margin: 0 -15px;
 	}
 
 	.navbar-default{
@@ -32,7 +112,7 @@
 	.navbar-default .navbar-collapse, 
 	.navbar-default .navbar-form{
 		background: #fff;
-		padding-bottom: 15px;
+		padding-bottom: 0;
 		margin-top: 3px;
 	}
 
@@ -45,8 +125,25 @@
 		text-align: left;
 	}
 
+	.navbar-default .navbar-nav > li{
+		padding-left: 15px;
+	}
 	.navbar-default .navbar-nav > li > a{
 		padding-left: 22px;
+	}
+	.navbar-default .navbar-nav > li.download {
+		margin-bottom: 15px;
+	}
+
+	.comparison_chart{
+		text-align: center;
+	}
+	.comparison_chart .chart_item{
+		display: inline-block;
+		max-width: 380px;
+		width: 100%;
+		margin: 0 auto 40px;
+		text-align: left;
 	}
 
 	.blog_post .read_more{
@@ -85,7 +182,99 @@
 	.blog_container{
 		margin-bottom: 40px;
 	}
+	.content_title{
+		padding: 0;
+	}
 
+	.faq{
+		text-align: center;
+	}
+
+	.faq .faq_right,
+	.faq .faq_left{
+		float: none;
+		display: inline-block;
+		margin: 0 0 30px;
+		text-align: left;
+	}
+
+	.instraction span{
+		display: none;
+	}
+
+	.section_content img{
+		max-width: 100%;
+	}
+
+	.register ul{
+		padding: 0;
+	}
+
+	.macbook_pro .mac_laptop{
+		margin: 0 auto 30px;
+		width: 650px;
+		background-size: 100%;
+	}
+
+	.macbook_pro .mac_laptop:after{
+		right: 60px;
+	}
+
+	.macbook_pro .mac_laptop .video{
+		height: 304px;
+		width: 485px;
+	}
+
+	.register .btn-default{
+		font-size: 20px;
+	}
+
+	.macbook_pro .video_details h2{
+		font-size: 24px;
+	}
+
+	.play_btn{
+		top: 35%;
+	}
+
+	#welcome{
+		min-height: 100%;
+		padding-bottom: 80px;
+	}
+	
+
+}
+
+@media only screen and (max-width: 690px){
+	.macbook_pro .mac_laptop{
+		width: 570px;
+		height: 380px;
+	}
+	.macbook_pro .mac_laptop:after{
+		right: 52px;
+	}
+	.macbook_pro .mac_laptop .video {
+	    height: 270px;
+	    left: 70px;
+	    top: 20px;
+	    width: 430px;
+	}
+}
+
+@media only screen and (max-width: 600px){
+	.macbook_pro .mac_laptop{
+		width: 450px;
+		height: 280px;
+	}
+	.macbook_pro .mac_laptop:after{
+		right: 40px;
+	}
+	.macbook_pro .mac_laptop .video {
+		height: 215px;
+	    left: 55px;
+	    top: 15px;
+	    width: 340px;
+	}
 }
 
 @media only screen and (max-width: 480px){
@@ -105,6 +294,43 @@
 	.blog_post .post_title{
 		padding-left: 60px;
 	}
+
+	.register .form-group{
+	    width: 60%;
+	    margin-right: 3%;
+	}
+
+	.register .btn-default{
+	    width: 35%;
+	    float: right;
+	    padding: 12px 0;
+	}
+
+	.macbook_pro .mac_laptop{
+		width: 350px;
+		height: 220px;
+	}
+
+	.macbook_pro .mac_laptop:after{
+		background: none;
+	}
+
+	.macbook_pro .mac_laptop .video {
+		height: 165px;
+	    left: 42px;
+	    top: 12px;
+	    width: 265px;
+	}
+
+	.play_btn{
+		top: 35%;
+	}
+
+	.clients .clients_logo li{
+		width: 100%;
+		margin: 0 auto 30px;
+	}
+	
 }
 
 @media only screen and (max-width: 380px){
@@ -123,11 +349,45 @@
 	.copyright ul li{
 		margin: 0 10px;
 	}
+
+	.register .form-group{
+	    width: 100%;
+	    margin-right: 0;
+	    float: none;
+	}
+
+	.register .btn-default{
+	    width: 100%;
+	    float: none;
+	}
+
+	.macbook_pro .mac_laptop{
+		width: 270px;
+		height: 180px;
+	}
+
+	.macbook_pro .mac_laptop .video{
+		height: 128px;
+		left: 32px;
+		top: 10px;
+		width: 205px;
+	}
 }
 
-@media (min-width: 768px) and (max-width: 991px){
-	
+@media only screen and (max-width: 240px){
+	.comparison_chart .chart_item .btn-default{
+		font-size: 16px;
+	}
+	.comparison_chart .chart_item .chart_title h1{
+		font-size: 20px;
+	}
+
+	.comparison_chart .chart_item h2,
+	.comparison_chart .chart_item .chart_title span{
+		font-size: 16px;
+	}
 }
+
 
 
 @media only screen and (min-width:768px){
@@ -136,7 +396,7 @@
 }
 
 @media only screen and (min-width:992px){
-	
+
 }
 
 @media only screen and (min-width:1200px){
@@ -149,6 +409,13 @@
 
 	.blog_container{
 		margin-right: -24px;
+	}
+
+	.ccs_right_arrow{
+		right: -120px;
+	}
+	span.ccs_right_arrow p{
+		max-width: 180px;
 	}
 	
 }
