@@ -1,22 +1,11 @@
 <div class="sidebar">
-	
-	<?php dynamic_sidebar('sidebar'); ?>
-
-	<form name="search" action="" role="search">
+	<form action="<?php site_url();?>" class="searchform" id="searchform" method="get" role="search">
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Search">
-			<button class="icon_search">&nbsp;</button>
+			<input type="text" id="s" name="s" class="form-control" placeholder="Search" value="<?php echo (isset($_GET['s']) ? $_GET['s'] : '');?>">
+			<input type="submit" id="searchsubmit" class="icon_search">
 		</div>
 	</form>
-	<div class="widget">
-		<h2><i class="icon_catagory_white"></i> CATEGORY</h2>
-		<ul>
-			<li><a href="#">Blog Category 1</a></li>
-			<li><a href="#">Blog Category 2</a></li>
-			<li><a href="#">Blog Category 3</a></li>
-			<li class="active"><a href="#">Blog Category 4</a></li>
-			<li><a href="#">Blog Category 5</a></li>
-		</ul>
-	</div><!-- /widget -->
+
+	<?php dynamic_sidebar('sidebar'); ?>
 	
 </div><!-- /sidebar -->

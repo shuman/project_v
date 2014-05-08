@@ -1,13 +1,12 @@
 
 jQuery(document).ready(function($) {
 
-    $(window).load(function(){
-      $("#header").sticky({ topSpacing: 0 });
-    });
+    $("#header").sticky({ topSpacing: 0 });
     
+
     // scrollTop
 	$(window).scroll(function(){
-        if ($(this).scrollTop() > 100) {
+        if ($(this).scrollTop() > 200) {
             $('.scrollup').fadeIn();
         } else {
             $('.scrollup').fadeOut();

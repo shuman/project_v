@@ -5,7 +5,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h1>WHAT’S NEW TODAY</h1>
-						<div class="slider"></div>
+						<div class="feature_banner"></div>
 					</div><!-- /slide -->
 				</div>
 			</div><!-- /container -->
@@ -20,7 +20,8 @@
 								<?php get_template_part( 'content', get_post_format() ); ?>
 							<?php endwhile; endif; ?>
 
-							<a class="btn btn-default load_more" href="#">LOAD MORE POST</a>
+
+							<a class="btn btn-default load_more" href="#">LOAD MORE POST <?php echo get_post_format();?></a>
 						</div><!-- /blog_container -->
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">

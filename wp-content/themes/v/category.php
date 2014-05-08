@@ -8,30 +8,28 @@
 						<div class="blog_container">
 							<?php if ( have_posts() ) : ?>
 
-								<header class="page-header">
-									<h1 class="page-title">
-										<?php
-											if ( is_day() ) :
-												echo get_the_date();
+								<header class="archive-header">
+									<h1 class="archive-title">Category Archives: <?php echo single_cat_title( '', false ); ?></h1>
 
-											elseif ( is_month() ) :
-												echo "Monthly Archives: " . get_the_date('F Y');
-
-											elseif ( is_year() ) :
-												echo "Yearly Archives: ".get_the_date('Y');
-
-											else :
-												echo "Archives";
-											endif;
-										?>
-									</h1>
-								</header><!-- .page-header -->
+									<?php
+										// Show an optional term description.
+										$term_description = term_description();
+										if ( ! empty( $term_description ) ) :
+											echo $term_description;
+										endif;
+									?>
+								</header><!-- .archive-header -->
 
 								<?php
 									// Start the Loop.
 									while ( have_posts() ) : the_post();
 
-										get_template_part( 'content', get_post_format() );
+									/*
+									 * Include the post format-specific template for the content. If you want to
+									 * use this in a child theme, then include a file called called content-___.php
+									 * (where ___ is the post format) and that will be used instead.
+									 */
+									get_template_part( 'content', get_post_format() );
 
 									endwhile;
 
@@ -41,6 +39,7 @@
 
 								endif;
 							?>
+
 						</div><!-- /blog_container -->
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">
@@ -52,4 +51,3 @@
 
 	</section><!-- /content -->
 <?php get_footer();?>
-			

@@ -2,7 +2,23 @@
 <html lang="en">
   <head>
 	<meta charset="utf-8">
-	<title>V</title>
+	<title><?php
+		/*
+		 * Print the <title> tag based on what is being viewed.
+		 */
+		global $page, $paged;
+		wp_title( '&lsaquo;', true, 'right' );
+		// Add the blog name.
+		bloginfo( 'name' );
+		// Add the blog description for the home/front page.
+		$site_description = get_bloginfo( 'description', 'display' );
+		if ( $site_description && ( is_home() || is_front_page() ) )
+			echo " &lsaquo; $site_description";
+		// Add a page number if necessary:
+		if ( $paged >= 2 || $page >= 2 ){
+			echo ' &lsaquo; ' . sprintf( __( 'Page %s', 'angelocate' ), max( $paged, $page ) );
+		}
+	?></title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -16,7 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/bootstrap.css">
 	
 	<!-- custom -->
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/custom.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/style.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/responsive.css">
 
 

@@ -9,7 +9,7 @@
 							<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 								<?php get_template_part( 'content', 'post' ); ?>
 							<?php endwhile; endif; ?>
-
+							<?php comments_template(); ?> 
 						</div><!-- /blog_container -->
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">

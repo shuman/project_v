@@ -17,15 +17,19 @@
 		}
 		?>
 		<img src="<?php echo $img_url;?>" alt="post_img">
+
 	</div><!-- /post_image -->
 
 	<div class="post_title">
 		<h2><?php the_title();?></h2>
-		<span><?php echo get_the_category_list(', '); ?> / <?php the_date(); ?></span>
+		<span><?php echo get_the_category_list(', '); ?> / <?php echo get_the_date(); ?></span>
 	</div><!-- /post_title -->
 
 	<div class="post_content">
-		<?php the_content();?>
+		<?php the_excerpt();?>
+		<div class="text-right">
+			<a class="btn read_more btn-default" href="<?php the_permalink();?>">Read more</a>
+		</div>
 	</div><!-- /post_content -->
 	<div class="post_meta">
 		<span class="post_comments"><?php comments_number( '0', '1', '%' ); ?></span><!-- /post_comments -->
