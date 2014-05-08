@@ -43,6 +43,7 @@ body{
 }
 
 h1, h2, h3, h4, h5, h6{
+    font-family: 'proxima_nova_rgregular', Arial, Sans-serif;
     font-weight: bold;
     margin: 0 0 16px;
 }
@@ -85,10 +86,22 @@ h3{
     line-height: normal;
 }
 
+h4{
+    font-family: 'proxima_novasemibold', Arial, Sans-serif;
+    font-size: 16px;
+    line-height: normal;
+}
+
 p{
+    font-family: 'proxima_nova_rgregular', Arial, Sans-serif;
     font-size: 16px;
     line-height: normal;
     margin-bottom: 10px;
+}
+
+strong{
+    font-family: 'proxima_nova_rgbold';
+    font-weight: normal;
 }
 
 .form-group{
@@ -151,7 +164,7 @@ button{
 /* header */
 
 #header{
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 1);
     border-bottom: 1px solid #ececec;
     width: 100%;
     height: 80px;
@@ -359,6 +372,7 @@ button{
 .comparison_chart .chart_item .chart_title h1{
     margin-bottom: 10px;
     text-transform: uppercase;
+    font-weight: normal;
 }
 .comparison_chart .chart_item .chart_title span{
     font-size: 28px;
@@ -815,13 +829,26 @@ span.tm_top_arrow p{
 
 .testimonial .owner_pic{
     display: inline-block;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
-.testimonial .rating{
-    margin: 15px 0;
-    display: inline-block;
-    width: 100%;
+.rating{
+    background: url(../images/star_rating_blank.png) no-repeat top left;
+    position: relative;
+    display: block;
+    width: 170px;
+    height: 30px;
+    margin: 0 auto 30px;
+}
+
+.rating .star{
+    background: url(../images/star_rating.png) no-repeat top left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    overflow: hidden;
+    height: 30px;
 }
 
 .testimonial .testimonial_content{
@@ -1196,7 +1223,6 @@ span.tm_top_arrow p{
 .copyright p{
     margin: 10px 0;
     font-size: 14px;
-    font-weight: bold;
 }
 
 .copyright .footer_menu{
@@ -1216,7 +1242,6 @@ span.tm_top_arrow p{
 
 .copyright ul li a{
     display: block;
-    font-weight: bold;
     color: #999;
     padding: 10px 0;
 }
@@ -1237,6 +1262,7 @@ span.tm_top_arrow p{
     width: 45px;
     z-index: 9999;
     opacity: 0.8;
+    display: none;
 }
 
 .scrollup:hover{
