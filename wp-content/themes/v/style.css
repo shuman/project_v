@@ -7,4 +7,91 @@ Version: 1.0
 Text Domain: vtheme
 */
 
+/* =========== Comment Form Style =========== */
+#comments  code{
+	white-space: normal;
+	display: block;
+}
+
+#respond label{
+	display: block;
+	font-family: "proxima_novasemibold";
+}
+#respond input[type="text"]{
+	padding: 5px 0;
+	min-height: 30px;
+	width: 100%;
+	max-width: 400px;
+}
+
+#respond textarea{
+	width: 100%;
+}
+
+#comments p{
+	font-size: 14px;
+}
+#comments .comment-list{
+	list-style: none;
+	margin: 0;
+	padding:0; 
+}
+
+#comments .comment-list li{
+	margin-bottom: 20px;
+}
+
+
+#comments .comment-body {
+	padding-left: 65px;
+	position: relative;
+	margin-bottom: 15px;
+	min-height: 55px;
+}
+
+#comments .comment-body .avatar{
+	position: absolute;
+	top: 2px;
+	left: 0;
+}
+
+#comments .comment-body .reply{
+	display: block;
+	text-align: right;
+}
+
+#comments .comment-body .reply a{
+	color: #0ea29d;
+}
+
+#comments .comment-author{
+	margin-bottom: 5px;
+}
+
+#comments .comment-author .comment-autor-name{
+	margin-bottom: 0;
+	font-family: 'proxima_novasemibold', Arial, Sans-serif;
+	font-size: 16px;
+	line-height: normal;
+	font-weight: normal;
+}
+
+#comments .comment-author .comment-meta{
+	font-size: 12px;
+	color: #cdcdcd;
+	line-height: normal;
+	display: block;
+	font-weight: bold;
+}
+
+#comments .children{
+	margin-left: 65px;
+}
+
+#comments .comment-awaiting-moderation{
+	color: #f04e23;
+}
+
+/* =========== End: Comment Form Style =========== */
+
 

@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<title><?php
 		/*
 		 * Print the <title> tag based on what is being viewed.
@@ -19,22 +20,8 @@
 			echo ' &lsaquo; ' . sprintf( __( 'Page %s', 'angelocate' ), max( $paged, $page ) );
 		}
 	?></title>
-	
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<!-- Fevicon -->
-	<link rel="icon" href="<?php echo get_stylesheet_directory_uri();?>/images/favicon.png" type="png" />
-		  
-	<!-- fonts -->
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/fonts.css">
-	
-	<!-- bootstrap -->
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/bootstrap.css">
-	
-	<!-- custom -->
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/style.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo get_stylesheet_directory_uri();?>/css/responsive.css">
-
+	<?php wp_head();?>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -42,15 +29,37 @@
 	  <script src="<?php echo get_stylesheet_directory_uri();?>/js/respond.js"></script>
 	<![endif]-->
 
-	<!-- js -->
-	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/jquery-1.11.1.js"></script>
-	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/bootstrap.js"></script>
-	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/jquery.sticky.js"></script>
-	<script type="text/javascript" src="<?php echo get_stylesheet_directory_uri();?>/js/custom.js"></script>
-
-  </head>
+</head>
 
 <body <?php body_class($class); ?>>
+	<?php if(is_front_page()): ?>
+		<section id="welcome" class="clearfix">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="intro">
+							<div class="logo"><a href="<?php echo site_url();?>"><img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="logo"></a></div><!-- /logo -->
+
+							<div class="register">
+								<h1><?php echo of_get_option('op_banner_text', ''); ?></h1>
+								<ul>
+									<li class="normal">
+										<form role="search">
+											<div class="form-group">
+												<input type="text" class="form-control" placeholder="Your Site URL">
+											</div>
+											<button class="btn-default">TRY V FREE</button>
+										</form>
+									</li>
+								</ul>
+							</div><!-- /register -->
+
+						</div><!-- /intro -->
+					</div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</section><!-- /welcome -->
+	<?php endif;?>
 
 	<header id="header" class="clearfix">
 		<div class="container">

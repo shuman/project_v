@@ -5,35 +5,19 @@
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
 						<h4>PRODUCT</h4>
-						<ul>
-							<li><a href="#">Tour</a></li>
-							<li><a href="#">Pricing</a></li>
-							<li><a href="#">Security</a></li>
-							<li><a href="#">Privacy</a></li>
-							<li><a href="#">Terms</a></li>
-						</ul>
+						<?php wp_nav_menu( array( 'theme_location' => 'product_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
 						<h4>USERS</h4>
-						<ul>
-							<li><a href="#">Sign In</a></li>
-							<li><a href="#">Support</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Stories</a></li>
-						</ul>
+						<?php wp_nav_menu( array( 'theme_location' => 'users_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
 						<h4>COMPANY</h4>
-						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Press</a></li>
-						</ul>
+						<?php wp_nav_menu( array( 'theme_location' => 'company_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
@@ -67,12 +51,7 @@
 			<div class="row">
 				<div class="col-lg-6 col-md-6 col-sm-6 f_right">
 					<div class="footer_menu">
-						<ul>
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Pricing</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Support</a></li>
-						</ul>
+						<?php wp_nav_menu( array( 'theme_location' => 'footer_menu' ) ); ?>
 					</div><!-- /footer_menu -->
 				</div>
 
@@ -86,6 +65,6 @@
 	
 	
 	<a class="scrollup" id="linkTop" href="#"></a>
-
+	<?php wp_footer();?>
 </body>
 </html>

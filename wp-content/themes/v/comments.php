@@ -12,42 +12,48 @@ if ( post_password_required() ) {
 
 	<?php if ( have_comments() ) : ?>
 
-	<h2 class="comments-title">
-		<?php
-			printf( _n( 'Comment:', 'Comments:', get_comments_number(), 'vtheme' ),
-				number_format_i18n( get_comments_number() ), '');
-		?>
-	</h2>
+		<h2 class="comments-title">
+			<?php
+				printf( _n( 'Comment:', 'Comments:', get_comments_number(), 'vtheme' ),
+					number_format_i18n( get_comments_number() ), '');
+			?>
+		</h2>
 
-	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-	<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'vtheme' ); ?></h1>
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'vtheme' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'vtheme' ) ); ?></div>
-	</nav><!-- #comment-nav-above -->
-	<?php endif; // Check for comment navigation. ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+		<nav id="comment-nav-above" class="navigation comment-navigation" role="navigation">
+			<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'vtheme' ); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'vtheme' ) ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'vtheme' ) ); ?></div>
+		</nav><!-- #comment-nav-above -->
+		<?php endif; // Check for comment navigation. ?>
 
-	<ol class="comment-list">
-		<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-				'avatar_size'=> 34,
-			) );
-		?>
-	</ol><!-- .comment-list -->
+		<ol class="comment-list">
+			<?php
+				/*wp_list_comments( array(
+					'style'      => 'ol',
+					'short_ping' => true,
+					'avatar_size'=> 34,
+				) );*/
 
-	<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
-	<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'vtheme' ); ?></h1>
-		<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'vtheme' ) ); ?></div>
-		<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'vtheme' ) ); ?></div>
-	</nav><!-- #comment-nav-below -->
-	<?php endif; // Check for comment navigation. ?>
+				wp_list_comments( array(
+					'type'=> 'comment',
+					'avatar_size'=> 50,
+					'callback'=>'vtheme_comment'
+				) );
+			?>
+		</ol><!-- .comment-list -->
 
-	<?php if ( ! comments_open() ) : ?>
-	<p class="no-comments"><?php _e( 'Comments are closed.', 'vtheme' ); ?></p>
-	<?php endif; ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) : ?>
+			<nav id="comment-nav-below" class="navigation comment-navigation" role="navigation">
+				<h1 class="screen-reader-text"><?php _e( 'Comment navigation', 'vtheme' ); ?></h1>
+				<div class="nav-previous"><?php previous_comments_link( __( '&larr; Older Comments', 'vtheme' ) ); ?></div>
+				<div class="nav-next"><?php next_comments_link( __( 'Newer Comments &rarr;', 'vtheme' ) ); ?></div>
+			</nav><!-- #comment-nav-below -->
+		<?php endif; // Check for comment navigation. ?>
+
+		<?php if ( ! comments_open() ) : ?>
+			<p class="no-comments"><?php _e( 'Comments are closed.', 'vtheme' ); ?></p>
+		<?php endif; ?>
 
 	<?php endif; // have_comments() ?>
 
