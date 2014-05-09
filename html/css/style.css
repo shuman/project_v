@@ -277,18 +277,14 @@ button{
     position: relative;
 }
 
-/* slider */
-.slider{
+/* top_banner */
+.chart_banner{
     display: block;
-}
-.slider .carousel{
     background: url(../images/slide_img2.jpg) no-repeat top center;
-}
-.slider .carousel-inner > .item{
-    height: 610px;
+    min-height: 610px;
 }
 
-.slider .carousel-inner .featured_caption{
+.chart_banner .featured_caption{
     display: block;
     position: relative;
     padding-top: 200px;
@@ -297,15 +293,15 @@ button{
     color: #fff;
 }
 
-.slider .carousel-inner .featured_caption h1{
+.chart_banner .featured_caption h1{
     font-weight: normal;
     line-height: 46px;
 }
-.slider .carousel-inner .featured_caption h1 strong{
+.chart_banner .featured_caption h1 strong{
     display: block;
 }
 
-.slider .carousel-inner .featured_caption p{
+.chart_banner .featured_caption p{
     font-size: 20px;
 }
 
@@ -328,7 +324,9 @@ button{
     text-align: center;
 }
 .content_title h1{
+    font-family: 'proxima_nova_rgbold';
     text-transform: uppercase;
+    font-weight: normal;
 }
 .content_title p{
     font-size: 20px;
@@ -438,7 +436,7 @@ button{
 
 .faq .faq_left{
     float: left;
-    max-width: 410px;
+    max-width: 400px;
     width: 100%;
 }
 
@@ -479,58 +477,165 @@ button{
     width: 100%;
 }
 
-.register{
+.subscribe{
     display: inline-block;
     max-width: 850px;
     width: 100%;
-    overflow: hidden;
     margin: 30px 0;
     text-align: center;
 }
 
-.register h1{
+.subscribe h1{
     color: #fff;
     font-weight: normal;
     margin-bottom: 50px;
 }
 
-.register ul{
+.signUp_v{
+    display: inline-block;
+    width: 650px;
+    min-height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.subscribe ul{
     margin: 0;
-    padding: 0 80px;
+    padding: 0;
+    width: 5000px;
 }
 
-.register ul li{
+.subscribe ul li{
     list-style: none;
+    float: left;
+    width: 650px;
 }
 
-.register .form-group{
+.subscribe .form-group{
     width: 70%;
     margin-right: 3%;
     float: left;
 }
-.register .form-group .form-control{
+.subscribe .form-group .form-control{
     box-shadow: none;
-    height: 46px;
+    height: 44px;
     border: 0 none;
 }
 
-.register .btn-default{
+.subscribe .btn-default{
     width: 27%;
     float: right;
     padding: 0 5px;
     font-size: 22px;
-    height: 46px;
+    height: 44px;
+    margin-bottom: 15px;
 }
 
-.wdt_300{
-    max-width: 300px;
+.progress_bar{
+    height: 5px;
+    width: 100%;
+    background: #fff;
+    position: relative;
+    margin: 0 0 5px;
+}
+.progress_bar span{
+    background: #18bcb6;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+}
+
+.signUp_v .progress_bar {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    margin-bottom: 3px;
+    width: 70%;
+}
+
+.select_btn{
+    background: url(../images/icon_select_btn.png) no-repeat center center;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 8px;
+    top: 10px;
+}
+
+.selected_cat{
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    right: 40px;
+    top: 10px;
+}
+.selected_cat img{
+    width: 100%;
+    display: block;
+}
+
+.select_category{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #ECECEC;
+    min-height: 120px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 44px;
+    width: 80px;
+    z-index: 10;
+    display: none;
+}
+.select_category ul{
+    padding: 0;
+    margin: 0;
+    width: auto;
+}
+.select_category ul li{
+    float: none;
+    display: block;
     width: 100%;
 }
 
-.wdt_440{
-    max-width: 440px;
-    width: 100%;
+.select_category ul li a{
+    margin: 5px 15px 10px;
+    display: block;
 }
+
+.subscribe ul li.step4 input.form-control{
+    display: inline-block;
+    float: left;
+    margin-right: 4%;
+    width: 48%;
+}
+.subscribe ul li.step4 input.form-control:last-child{
+    margin-right: 0;
+}
+
+.signUp_v h1{
+    display: inline-block;
+    color: #fff;
+    font-weight: normal;
+    margin-bottom: 0;
+    line-height: normal;
+}
+.signUp_v .step5 a{
+    padding: 0 20px;
+    color: #fff;
+    line-height: 20px;
+    font-size: 18px;
+    font-weight: normal;
+    display: inline-block;
+}
+.signUp_v .step5 a:hover{
+    text-decoration: underline;
+    color: #0EA29D;
+}
+
 
 /* macbook_pro */
 .macbook_pro{
@@ -966,11 +1071,10 @@ span.tm_top_arrow p{
     line-height: 24px;
 }
 .blog_post .post_title span{
-    font-size: 12px;
+    font-size: 13px;
     color: #cdcdcd;
     line-height: normal;
     display: block;
-    font-weight: bold;
 }
 
 .blog_post p{
@@ -1193,6 +1297,21 @@ span.tm_top_arrow p{
     background: #4e4e4e;
     padding: 60px 0 15px;
     color: #fff;
+}
+
+#footer .xs_left{
+    float: left;
+    width: 48%;
+    min-height: 250px;
+    vertical-align: top;
+}
+#footer .xs_right{
+    float: right;
+    width: 45%;
+    min-height: 250px;
+    vertical-align: top;
+    margin-left: 4%;
+
 }
 
 #footer .footer_item{

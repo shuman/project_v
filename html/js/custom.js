@@ -18,5 +18,10 @@ jQuery(document).ready(function($) {
         return false;
     });
 
+    $('.select_btn').click(function(){
+        $('.select_category').toggle('slow');
+        return false;
+    });
+
 });
 
