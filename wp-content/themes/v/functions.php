@@ -332,30 +332,34 @@ class Comment_Widget extends WP_Widget {
 	 */
 	public function widget( $args, $instance ) {
 		$title = apply_filters( 'widget_title', $instance['title'] );
+		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 3;
+		if ( ! $number )
+			$number = 3;
 
 		echo $args['before_widget'];
 		if ( ! empty( $title ) ){
 			echo $args['before_title'] . $title . $args['after_title'];
 		}
-		global $wpdb;
+
 		$comments = get_comments( apply_filters( 'widget_comments_args', array(
 			'number'      => $number,
 			'status'      => 'approve',
 			'post_status' => 'publish'
 		) ) );
 
-		// echo '<pre>';
-		// print_r($comments);
-		// echo '</pre>';
+		//echo '<pre>';
+		//print_r($comments);
+		//echo '</pre>';
 		if($comments):
 			foreach ($comments as $comment) {
+				$default_avatar = get_stylesheet_directory_uri() . '/images/author_avatar.png';
 				?>
 				<div class="comment_box">
-					<div class="cmt_pics"><img src="<?php echo get_stylesheet_directory_uri();?>/images/cmt_img1.png" alt="cmt_pics"></div>
+					<div class="cmt_pics"><?php echo get_avatar( $comment->comment_author_email, 65, $default_avatar, $comment->comment_author ); ?></div>
 					<a href="<?php echo get_permalink($comment->ID);?>"><h3><?php echo $comment->post_title;?></h3></a>
 					<div class="post_meta">
-						<span class="post_coments">113</span><!-- /post_coments -->
-						<span class="post_share">256</span><!-- /post_share -->
+						<span class="post_comments"><?php echo get_comments_number($comment->ID);?></span><!-- /post_comments -->
+						<span class="post_share">0</span><!-- /post_share -->
 					</div><!-- /meta -->
 				</div>
 				<?php
@@ -370,16 +374,16 @@ class Comment_Widget extends WP_Widget {
 	 * @param array $instance The widget options
 	 */
 	public function form( $instance ) {
-		if ( isset( $instance[ 'title' ] ) ) {
-			$title = $instance[ 'title' ];
-		}
-		else {
-			$title = __( 'COMMENTED', 'vtheme' );
-		}
+			$title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'COMMENTED';
+			$limit = isset( $instance[ 'limit' ] ) ? $instance[ 'limit' ] : 3;
 		?>
 		<p>
-		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:' ); ?></label> 
+			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="text" value="<?php echo esc_attr( $limit ); ?>">
 		</p>
 		<?php 
 	}
@@ -393,6 +397,7 @@ class Comment_Widget extends WP_Widget {
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
 		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+		$instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? strip_tags( $new_instance['limit'] ) : 3;
 
 		return $instance;
 	}

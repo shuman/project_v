@@ -476,7 +476,7 @@ textarea:focus{
     text-align: left;
 }
 
-.featured .item:hover .post_meta .post_coments{
+.featured .item:hover .post_meta .post_comments{
     background: url("../images/icon_coments_hover.png") no-repeat scroll left center;
     color: #fff;
 }
@@ -1408,7 +1408,7 @@ span.tm_top_arrow p{
     font-weight: bold;
 }
 
-.post_meta .post_coments{
+.post_meta .post_comments{
     background: url(../images/icon_coments.png) no-repeat left center;
 }
 
