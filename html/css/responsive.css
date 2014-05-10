@@ -169,16 +169,17 @@
 		display: inline-block;
 		width: 100%;
 		max-width: 350px;
+		text-align: left;
 	}
 
 	#footer .xs_right,
 	#footer .xs_left{
 		max-width: 250px;
 		display: inline-block;
-		width: 49%;
+		width: 45%;
 		margin: 0 auto;
 		float: none;
-		text-align: center;
+		padding-left: 5%;
 	}
 	.copyright .f_left,
 	.copyright .f_right{
@@ -259,8 +260,18 @@
 	.subscribe .btn-default{
 		font-size: 20px;
 	}
-	
 
+	.dropdown_box{
+		position: relative;
+		top: 5px;
+		left: 15px;
+		right: auto;
+	}
+	
+	.dropdown_box:after{
+		left: 50px;
+		right: auto;
+	}
 
 }
 
@@ -434,6 +445,7 @@
 	.subscribe ul li{
 		width: 250px;
 	}
+
 }
 
 @media only screen and (max-width: 240px){

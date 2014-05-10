@@ -66,7 +66,6 @@
 										<li class="download"><a href="#">DOWNLOAD</a></li>
 									</ul><!-- /.navbar-nav -->
 								</div><!-- /.navbar-collapse -->
-
 							</nav>
 						</div><!-- /menuber -->
 					</div><!-- /head -->
@@ -81,7 +80,71 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<h1>WHAT’S NEW TODAY</h1>
-						<div class="feature_banner"></div>
+						<div id="featured_v" class="carousel slide" data-interval="5000" data-ride="carousel">
+				            <div class="carousel-inner">
+				                <div class="item active" style="background: url(images/slide_img1.jpg) no-repeat center top;">
+				                	<a class="mask" href="#">
+					                    <div class="featured_content">
+					                    	<div class="content_title icon_slider_blog_title animated fadeInLeftBig">
+												<h1>BLOG POST NAME</h1>
+												<span>blog categories / April, 26th 2014</span>
+											</div><!-- /content_title -->
+
+											<div class="post_meta animated fadeInRightBig">
+												<span class="post_coments">113</span><!-- /post_coments -->
+												<span class="post_share">256</span><!-- /post_share -->
+											</div>
+					                    </div>
+				                    </a>
+				                </div><!-- /slider_item -->
+
+				                <div class="item" style="background: url(images/slide_img1.jpg) no-repeat center top;">
+				                	<a class="mask" href="#">
+					                    <div class="featured_content">
+					                    	<div class="content_title icon_slider_blog_title animated fadeInLeftBig">
+												<h1>BLOG POST NAME</h1>
+												<span>blog categories / April, 26th 2014</span>
+											</div><!-- /content_title -->
+
+											<div class="post_meta animated fadeInRightBig">
+												<span class="post_coments">113</span><!-- /post_coments -->
+												<span class="post_share">256</span><!-- /post_share -->
+											</div>
+					                    </div>
+				                    </a>
+				                </div><!-- /slider_item -->
+
+				                <div class="item" style="background: url(images/slide_img1.jpg) no-repeat center top;">
+				                	<a class="mask" href="#">
+					                    <div class="featured_content">
+					                    	<div class="content_title icon_slider_blog_title animated fadeInLeftBig">
+												<h1>BLOG POST NAME</h1>
+												<span>blog categories / April, 26th 2014</span>
+											</div><!-- /content_title -->
+
+											<div class="post_meta animated fadeInRightBig">
+												<span class="post_coments">113</span><!-- /post_coments -->
+												<span class="post_share">256</span><!-- /post_share -->
+											</div>
+					                    </div>
+				                    </a>
+				                </div><!-- /slider_item -->
+				            </div><!--//carousel-inner-end-->
+
+				             <!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#featured_v" data-slide-to="0" class="active"><img src="images/slider_indicators_img1.png"></li>
+								<li data-target="#featured_v" data-slide-to="1"><img src="images/slider_indicators_img2.png"></li>
+								<li data-target="#featured_v" data-slide-to="2"><img src="images/slider_indicators_img3.png"></li>
+							</ol>
+
+							<!-- Controls -->
+							<div class="slider_controls">
+								<a class="slider_nav_left" href="#featured_v" data-slide="prev"></a>
+								<a class="slider_nav_right" href="#featured_v" data-slide="next"></a>
+							</div>
+
+				        </div><!--//carousel-end-->
 					</div><!-- /slide -->
 				</div>
 			</div><!-- /container -->
@@ -142,10 +205,10 @@
 					</div>
 					<div class="col-lg-4 col-md-4 col-sm-4">
 						<div class="sidebar">
-							<form role="search">
+							<form role="search" method="get" id="searchform" class="searchform" action="">
 								<div class="form-group">
-									<input type="text" class="form-control" placeholder="Search">
-									<button class="icon_search">&nbsp;</button>
+									<input type="text" value="" placeholder="Search" class="form-control" name="s" id="s">
+									<input type="submit" value="" class="icon_search" id="searchsubmit">
 								</div>
 							</form>
 							<div class="widget icon_cat">
@@ -209,51 +272,58 @@
 	<footer id="footer" class="clearfix">
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<div class="footer_item">
-						<h4>PRODUCT</h4>
-						<ul>
-							<li><a href="#">Tour</a></li>
-							<li><a href="#">Pricing</a></li>
-							<li><a href="#">Security</a></li>
-							<li><a href="#">Privacy</a></li>
-							<li><a href="#">Terms</a></li>
-						</ul>
-					</div>
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<div class="xs_left">
+						<div class="footer_item">
+							<h4>PRODUCT</h4>
+							<ul>
+								<li><a href="#">Tour</a></li>
+								<li><a href="#">Pricing</a></li>
+								<li><a href="#">Security</a></li>
+								<li><a href="#">Privacy</a></li>
+								<li><a href="#">Terms</a></li>
+							</ul>
+						</div>
+					</div><!-- /xs_left -->
+
+					<div class="xs_right">
+						<div class="footer_item">
+							<h4>USERS</h4>
+							<ul>
+								<li><a href="#">Sign In</a></li>
+								<li><a href="#">Support</a></li>
+								<li><a href="#">FAQs</a></li>
+								<li><a href="#">Stories</a></li>
+							</ul>
+						</div>
+					</div><!-- /xs_right -->
 				</div><!-- /footer_item -->
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<div class="footer_item">
-						<h4>USERS</h4>
-						<ul>
-							<li><a href="#">Sign In</a></li>
-							<li><a href="#">Support</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Stories</a></li>
-						</ul>
-					</div>
-				</div><!-- /footer_item -->
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<div class="footer_item">
-						<h4>COMPANY</h4>
-						<ul>
-							<li><a href="#">About Us</a></li>
-							<li><a href="#">Blog</a></li>
-							<li><a href="#">Contact</a></li>
-							<li><a href="#">Press</a></li>
-						</ul>
-					</div>
-				</div><!-- /footer_item -->
-				<div class="col-lg-2 col-md-2 col-sm-2">
-					<div class="footer_item">
-						<h4>FOLLOW</h4>
-						<ul>
-							<li><a href="#">Facebook</a></li>
-							<li><a href="#">Twitter</a></li>
-							<li><a href="#">LinkedIn</a></li>
-							<li><a href="#">Vimeo</a></li>
-							<li><a href="#">Google+</a></li>
-						</ul>
-					</div>
+
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<div class="xs_left">
+						<div class="footer_item">
+							<h4>COMPANY</h4>
+							<ul>
+								<li><a href="#">About Us</a></li>
+								<li><a href="#">Blog</a></li>
+								<li><a href="#">Contact</a></li>
+								<li><a href="#">Press</a></li>
+							</ul>
+						</div>
+					</div><!-- /xs_left -->
+
+					<div class="xs_right">
+						<div class="footer_item">
+							<h4>FOLLOW</h4>
+							<ul>
+								<li><a href="#">Facebook</a></li>
+								<li><a href="#">Twitter</a></li>
+								<li><a href="#">LinkedIn</a></li>
+								<li><a href="#">Vimeo</a></li>
+								<li><a href="#">Google+</a></li>
+							</ul>
+						</div>
+					</div><!-- /xs_right -->
 				</div><!-- /footer_item -->
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<div class="footer_item footer_right">
