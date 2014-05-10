@@ -151,6 +151,11 @@
 		padding: 8px 12px 6px; 
 	}
 
+	.sidebar{
+		max-width: 350px;
+		margin: 0 auto;
+	}
+
 	#footer{
 		text-align: center;
 		margin-bottom: 0;

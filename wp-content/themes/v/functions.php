@@ -1,7 +1,7 @@
 <?php
 
+show_admin_bar(false);
 add_theme_support( 'post-thumbnails' ); 
-
 update_option('image_default_link_type','none');
 
 function register_session(){
@@ -11,10 +11,99 @@ function register_session(){
 }
 add_action('init','register_session', 1);
 
+/*
+ * Helper function to return the theme option value. If no value has been saved, it returns $default.
+ * Needed because options are saved as serialized strings.
+ *
+ */
+
+if ( !function_exists( 'of_get_option' ) ) {
+function of_get_option($name, $default = false) {
+
+	$optionsframework_settings = get_option('optionsframework');
+
+	// Gets the unique option id
+	$option_name = $optionsframework_settings['id'];
+
+	if ( get_option($option_name) ) {
+		$options = get_option($option_name);
+	}
+
+	if ( isset($options[$name]) ) {
+		return $options[$name];
+	} else {
+		return $default;
+	}
+}
+}
+
+/*
+ * This is an example of how to add custom scripts to the options panel.
+ * This one shows/hides the an option when a checkbox is clicked.
+ */
+
+add_action('optionsframework_custom_scripts', 'optionsframework_custom_scripts');
+
+function optionsframework_custom_scripts() { ?>
+
+<script type="text/javascript">
+jQuery(document).ready(function() {
+
+	jQuery('#op_testimonial_posttype').change(function() {
+		var posttype = jQuery(this).val();
+		jQuery('#section-op_testimonial_postcategories').fadeOut(400);
+		jQuery('#section-op_testimonial_pages').fadeOut(400);
+		jQuery('#section-op_testimonial_type_posts').fadeOut(400);
+		if(posttype == "post"){
+  			jQuery('#section-op_testimonial_postcategories').fadeIn(400);
+		}
+		else if(posttype == "page"){
+  			jQuery('#section-op_testimonial_pages').fadeIn(400);
+		}
+		else if(posttype == "testimonial"){
+  			jQuery('#section-op_testimonial_type_posts').fadeIn(400);
+			
+		}
+
+	});
+
+	jQuery('#example_showhidden').click(function() {
+  		jQuery('#section-example_text_hidden').fadeToggle(400);
+	});
+
+	if (jQuery('#example_showhidden:checked').val() !== undefined) {
+		jQuery('#section-example_text_hidden').show();
+	}
+
+});
+</script>
+<style type="text/css">
+	#optionsframework h4{
+		margin: 0;
+	}
+	#optionsframework .section-info{
+		background: #F1F1F1;
+		border-top: 1px solid #DDDDDD;
+		border-bottom: 1px solid #DDDDDD;
+		padding: 10px 10px;
+		margin: 20px 0 10px 0;
+	}
+	#optionsframework .section-editor h4{
+		float: left;
+		display: inline-block;
+		position: relative;
+		top: 20px;
+	}
+</style>
+<?php
+}
+
+
+
 // This theme uses wp_nav_menu() in two locations.
 register_nav_menus( array(
 	'primary_menu'   => __( 'Primary', 'vtheme' ),
-	'footer_menu' => __( 'Product Menu (footer)', 'vtheme' ),
+	'footer_menu' => __( 'Footer Menu (footer)', 'vtheme' ),
 	'product_menu' => __( 'Product Menu (footer)', 'vtheme' ),
 	'users_menu' => __( 'User Menu (footer)', 'vtheme' ),
 	'company_menu' => __( 'Company Menu (footer)', 'vtheme' ),
@@ -136,66 +225,89 @@ add_filter( 'default_content', 'faq_custom_content_text' );
 	END CUSTOM FAQ POST TYPE 
 ***************************************************************************** */
 
-function custom_comment_form(){
-	$args = array(
-		'id_form'           => 'commentform',
-		'id_submit'         => 'submit',
-		'title_reply'       => __( 'Leave a Reply' ),
-		'title_reply_to'    => __( 'Leave a Reply to %s' ),
-		'cancel_reply_link' => __( 'Cancel Reply' ),
-		'label_submit'      => __( 'Post Comment' ),
 
-		'comment_field' 	=>  '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) .
-		'</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true">' .
-		'</textarea></p>',
-
-		'must_log_in' => '<p class="must-log-in">' .
-		sprintf(
-		  __( 'You must be <a href="%s">logged in</a> to post a comment.' ),
-		  wp_login_url( apply_filters( 'the_permalink', get_permalink() ) )
-		) . '</p>',
-
-		'logged_in_as' => '<p class="logged-in-as">' .
-		sprintf(
-		__( 'Logged in as <a href="%1$s">%2$s</a>. <a href="%3$s" title="Log out of this account">Log out?</a>' ),
-		  admin_url( 'profile.php' ),
-		  $user_identity,
-		  wp_logout_url( apply_filters( 'the_permalink', get_permalink( ) ) )
-		) . '</p>',
-
-		'comment_notes_before' => '<p class="comment-notes">' .
-		__( 'Your email address will not be published.' ) . ( $req ? $required_text : '' ) .
-		'</p>',
-
-		'comment_notes_after' => '<p class="form-allowed-tags">' .
-		sprintf(
-		  __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ),
-		  ' <code>' . allowed_tags() . '</code>'
-		) . '</p>',
-
-		'fields' => apply_filters( 'comment_form_default_fields', array(
-
-		'author' =>
-		  '<p class="comment-form-author">' .
-		  '<label for="author">' . __( 'Name', 'domainreference' ) . '</label> ' .
-		  ( $req ? '<span class="required">*</span>' : '' ) .
-		  '<input id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) .
-		  '" size="30"' . $aria_req . ' /></p>',
-
-		'email' =>
-		  '<p class="comment-form-email"><label for="email">' . __( 'Email', 'domainreference' ) . '</label> ' .
-		  ( $req ? '<span class="required">*</span>' : '' ) .
-		  '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-		  '" size="30"' . $aria_req . ' /></p>',
-
-		'url' =>
-		  '<p class="comment-form-url"><label for="url">' .
-		  __( 'Website', 'domainreference' ) . '</label>' .
-		  '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
-		  '" size="30" /></p>'
+add_action( 'init', 'create_testimonial_post_type' );
+function create_testimonial_post_type() {
+	register_post_type( 'testimonial',
+		array(
+			'labels' => array(
+				'name' => __( 'Testimonials' ),
+				'singular_name' => __( 'Testimonial' )
+			),
+		'public' => true,
+		'has_archive' => true,
 		)
-		),
-		);
-
-	comment_form($comments_args);
+	);
 }
+
+
+
+function vtheme_comment($comment, $args, $depth) {
+	$GLOBALS['comment'] = $comment;
+	extract($args, EXTR_SKIP);
+
+	if ( 'div' == $args['style'] ) {
+		$tag = 'div';
+		$add_below = 'comment';
+	} else {
+		$tag = 'li';
+		$add_below = 'div-comment';
+	}
+	?>
+	<<?php echo $tag ?> <?php comment_class( empty( $args['has_children'] ) ? '' : 'parent' ) ?> id="comment-<?php comment_ID() ?>">
+	<?php if ( 'div' != $args['style'] ) : ?>
+		<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+	<?php endif; ?>
+	<div class="comment-author vcard">
+		<?php if ( $args['avatar_size'] != 0 ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
+		<div class="comment-autor-name">
+			<?php printf( __( '<cite class="fn">%s</cite> <span class="says">wrote:</span>' ), get_comment_author_link() ); ?>
+		</div>
+		<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ); ?>">
+			<?php
+				/* translators: 1: date, 2: time */
+				printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time() ); ?></a><?php edit_comment_link( __( '(Edit)' ), '  ', '' );
+			?>
+		</div>
+	</div>
+	<?php if ( $comment->comment_approved == '0' ) : ?>
+		<em class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></em>
+		<br />
+	<?php endif; ?>
+	
+
+	<?php comment_text(); ?>
+
+	<div class="reply">
+	<?php comment_reply_link( array_merge( $args, array( 'add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+	</div>
+	<?php if ( 'div' != $args['style'] ) : ?>
+	</div>
+	<?php endif; ?>
+<?php
+}
+
+
+function theme_scripts() {
+	/* Scripts */
+	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js');
+	wp_enqueue_script('jquery.sticky', get_stylesheet_directory_uri() . '/js/jquery.sticky.js', array( 'jquery' ));
+	wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ), '1.0');
+
+	/* Styles */
+	wp_register_style('fonts', get_stylesheet_directory_uri() . '/css/fonts.css');
+  	wp_enqueue_style( 'fonts' );
+	wp_register_style('bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css');
+  	wp_enqueue_style( 'bootstrap' );
+	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/style.css');
+  	wp_enqueue_style( 'custom' );
+	wp_register_style('responsive', get_stylesheet_directory_uri() . '/css/responsive.css');
+  	wp_enqueue_style( 'responsive' );
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	
+}
+add_action('wp_enqueue_scripts', 'theme_scripts');
+
+
+
+
