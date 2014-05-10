@@ -311,3 +311,96 @@ add_action('wp_enqueue_scripts', 'theme_scripts');
 
 
 
+class Comment_Widget extends WP_Widget {
+
+	/**
+	 * Sets up the widgets name etc
+	 */
+	public function __construct() {
+		parent::__construct(
+			'comment_widget', // Base ID
+			__('Commented', 'vtheme'), // Name
+			array( 'description' => __( 'Commented Widget for Sidebar', 'vtheme' ), ) // Args
+		);
+	}
+
+	/**
+	 * Outputs the content of the widget
+	 *
+	 * @param array $args
+	 * @param array $instance
+	 */
+	public function widget( $args, $instance ) {
+		$title = apply_filters( 'widget_title', $instance['title'] );
+
+		echo $args['before_widget'];
+		if ( ! empty( $title ) ){
+			echo $args['before_title'] . $title . $args['after_title'];
+		}
+		global $wpdb;
+		$comments = get_comments( apply_filters( 'widget_comments_args', array(
+			'number'      => $number,
+			'status'      => 'approve',
+			'post_status' => 'publish'
+		) ) );
+
+		// echo '<pre>';
+		// print_r($comments);
+		// echo '</pre>';
+		if($comments):
+			foreach ($comments as $comment) {
+				?>
+				<div class="comment_box">
+					<div class="cmt_pics"><img src="<?php echo get_stylesheet_directory_uri();?>/images/cmt_img1.png" alt="cmt_pics"></div>
+					<a href="<?php echo get_permalink($comment->ID);?>"><h3><?php echo $comment->post_title;?></h3></a>
+					<div class="post_meta">
+						<span class="post_coments">113</span><!-- /post_coments -->
+						<span class="post_share">256</span><!-- /post_share -->
+					</div><!-- /meta -->
+				</div>
+				<?php
+			}
+		endif;
+		echo $args['after_widget'];
+	}
+
+	/**
+	 * Outputs the options form on admin
+	 *
+	 * @param array $instance The widget options
+	 */
+	public function form( $instance ) {
+		if ( isset( $instance[ 'title' ] ) ) {
+			$title = $instance[ 'title' ];
+		}
+		else {
+			$title = __( 'COMMENTED', 'vtheme' );
+		}
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
+		</p>
+		<?php 
+	}
+
+	/**
+	 * Processing widget options on save
+	 *
+	 * @param array $new_instance The new options
+	 * @param array $old_instance The previous options
+	 */
+	public function update( $new_instance, $old_instance ) {
+		$instance = array();
+		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+		return $instance;
+	}
+}
+/*
+add_action( 'widgets_init', function(){
+     register_widget( 'Comment_Widget' );
+});*/
+add_action('widgets_init',
+     create_function('', 'return register_widget("Comment_Widget");')
+);

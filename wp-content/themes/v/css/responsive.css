@@ -71,6 +71,10 @@
 	.instraction span{
 		display: none;
 	}
+	.faq .faq_right,
+	.faq .faq_left{
+		max-width: 330px;
+	}
 
 }
 
@@ -165,9 +169,17 @@
 		display: inline-block;
 		width: 100%;
 		max-width: 350px;
-		text-align: left;
 	}
 
+	#footer .xs_right,
+	#footer .xs_left{
+		max-width: 250px;
+		display: inline-block;
+		width: 49%;
+		margin: 0 auto;
+		float: none;
+		text-align: center;
+	}
 	.copyright .f_left,
 	.copyright .f_right{
 	    float: none !important;
@@ -211,29 +223,6 @@
 		max-width: 100%;
 	}
 
-	.register ul{
-		padding: 0;
-	}
-
-	.macbook_pro .mac_laptop{
-		margin: 0 auto 30px;
-		width: 650px;
-		background-size: 100%;
-	}
-
-	.macbook_pro .mac_laptop:after{
-		right: 60px;
-	}
-
-	.macbook_pro .mac_laptop .video{
-		height: 304px;
-		width: 485px;
-	}
-
-	.register .btn-default{
-		font-size: 20px;
-	}
-
 	.macbook_pro .video_details h2{
 		font-size: 24px;
 	}
@@ -246,7 +235,32 @@
 		min-height: 100%;
 		padding-bottom: 80px;
 	}
+
+	.macbook_pro .mac_laptop{
+		background-size: 100%;
+		margin: 0 auto 30px;
+		width: 650px;
+	}
+
+	.macbook_pro .mac_laptop:after{
+		right: 60px;
+	}
+
+	.macbook_pro .mac_laptop .video{
+		height: 304px;
+		width: 485px;
+	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 600px;
+	}
+
+	.subscribe .btn-default{
+		font-size: 20px;
+	}
 	
+
 
 }
 
@@ -264,6 +278,11 @@
 	    top: 20px;
 	    width: 430px;
 	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 500px;
+	}
 }
 
 @media only screen and (max-width: 600px){
@@ -279,6 +298,20 @@
 	    left: 55px;
 	    top: 15px;
 	    width: 340px;
+	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 430px;
+	}
+
+	.signUp_v .progress_bar,
+	.subscribe .form-group{
+		width: 64%;
+	}
+
+	.subscribe .btn-default{
+		width: 33%;
 	}
 }
 
@@ -298,17 +331,6 @@
 	}
 	.blog_post .post_title{
 		padding-left: 60px;
-	}
-
-	.register .form-group{
-	    width: 60%;
-	    margin-right: 3%;
-	}
-
-	.register .btn-default{
-	    width: 35%;
-	    float: right;
-	    padding: 12px 0;
 	}
 
 	.macbook_pro .mac_laptop{
@@ -335,6 +357,47 @@
 		width: 100%;
 		margin: 0 auto 30px;
 	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 300px;
+	}
+
+	.signUp_v {
+		height: auto;
+	}
+
+	.subscribe ul{
+		display: inline-block;
+	}
+
+	.subscribe .form-group{
+	    width: 100%;
+	    margin-right: 0;
+	    float: none;
+	    margin-bottom: 10px;
+	}
+
+	.signUp_v .progress_bar{
+		width: 100%;
+		position: relative;
+		left: auto;
+		bottom: 5px;
+		top: auto;
+		display: block;
+	}
+
+	.subscribe .btn-default{
+	    width: 100%;
+	    float: none;
+	    margin-bottom: 10px;
+	}
+
+	.subscribe ul li.step4 input.form-control{
+		float: none;
+		width: 100%;
+		margin: 10px 0 0;
+	}
 	
 }
 
@@ -355,17 +418,6 @@
 		margin: 0 10px;
 	}
 
-	.register .form-group{
-	    width: 100%;
-	    margin-right: 0;
-	    float: none;
-	}
-
-	.register .btn-default{
-	    width: 100%;
-	    float: none;
-	}
-
 	.macbook_pro .mac_laptop{
 		width: 270px;
 		height: 180px;
@@ -376,6 +428,11 @@
 		left: 32px;
 		top: 10px;
 		width: 205px;
+	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 250px;
 	}
 }
 
@@ -390,6 +447,11 @@
 	.comparison_chart .chart_item h2,
 	.comparison_chart .chart_item .chart_title span{
 		font-size: 16px;
+	}
+
+	.signUp_v,
+	.subscribe ul li{
+		width: 180px;
 	}
 }
 
