@@ -1561,10 +1561,10 @@ span.tm_top_arrow p{
     right: 0;
     height: 70px;
     width: 65px;
+    text-align: right;
 }
 .comment_box .cmt_pics img{
-    display: block;
-    width: 100%;
+    display: inline-block;
 }
 
 .comment_box h3{
