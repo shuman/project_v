@@ -299,7 +299,7 @@ function theme_scripts() {
   	wp_enqueue_style( 'fonts' );
 	wp_register_style('bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css');
   	wp_enqueue_style( 'bootstrap' );
-	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/style.css');
+	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
   	wp_enqueue_style( 'custom' );
 	wp_register_style('responsive', get_stylesheet_directory_uri() . '/css/responsive.css');
   	wp_enqueue_style( 'responsive' );

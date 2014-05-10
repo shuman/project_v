@@ -527,7 +527,7 @@ textarea:focus{
     height: 50px;
     margin: 0 1px;
     text-indent: 0;
-    width: 59px;
+    width: 50px;
     font-size: 0;
     line-height: 0;
     position: relative;
@@ -543,6 +543,11 @@ textarea:focus{
     position: absolute;
     background: #0ea29d;
     z-index: 10;
+}
+
+.featured .carousel-indicators li img{
+    width: 100%;
+    height: 100%;
 }
 
 .mask{
