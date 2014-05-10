@@ -104,3 +104,43 @@ Text Domain: vtheme
 	width: 100%;
 	height: 100%;
 }
+
+
+.screenshot{
+	max-width: 800px;
+	min-height: 200px;
+	width: 100%;
+	margin: 0 auto;
+	box-shadow: 0 0 20px #F0F0F0;
+	border-radius: 10px;
+	background-repeat: no-repeat;
+	background-position: center top;
+	background-size: cover;
+}
+.screenshot.chrome{
+	padding-top: 71px;
+	background-image: url(images/browser-chrome.jpg);
+}
+.screenshot.safari{
+	padding-top: 66px;
+	background-image: url(images/browser-safari.jpg);
+}
+.screenshot.firefox{
+	padding-top: 85px;
+	background-image: url(images/browser-firefox.jpg);
+}
+.screenshot.ipad {
+  background-image: url(images/browser-ipad.png);
+  box-shadow: 0 0 0;
+  max-width: 730px;
+  min-height: 560px;
+  padding: 55px 60px;
+  border-radius: 25px;
+}
+.screenshot.none {
+  box-shadow: 0 0 0;
+  padding: 0;
+}
+.screenshot img{
+	max-width: 100%;
+}

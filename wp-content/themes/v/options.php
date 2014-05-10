@@ -130,6 +130,12 @@ function optionsframework_options() {
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
 
+	$options[] = array(
+		'name' => __('Screenshot', 'vtheme'),
+		'desc' => __('This image will display inside browser mockup', 'vtheme'),
+		'id' => $prefix . 'simple_text_editing_image',
+		'type' => 'upload');
+
 	/* New Section */
 	$options[] = array(
 		'name' => __('MEDIA DRAG AND DROP', 'vtheme'),
@@ -147,6 +153,12 @@ function optionsframework_options() {
 		'id' => $prefix . 'media_drag_and_drop_content',
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
+
+	$options[] = array(
+		'name' => __('Screenshot', 'vtheme'),
+		'desc' => __('This image will display inside browser mockup', 'vtheme'),
+		'id' => $prefix . 'media_drag_and_drop_image',
+		'type' => 'upload');
 	
 	/* New Section */
 	$options[] = array(
@@ -166,6 +178,12 @@ function optionsframework_options() {
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
 
+	$options[] = array(
+		'name' => __('Screenshot', 'vtheme'),
+		'desc' => __('This image will display inside browser mockup', 'vtheme'),
+		'id' => $prefix . 'consistent_customized_styling_image',
+		'type' => 'upload');
+
 	/* New Section */
 	$options[] = array(
 		'name' => __('VERSION CONTROL', 'vtheme'),
@@ -184,6 +202,12 @@ function optionsframework_options() {
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
 
+	$options[] = array(
+		'name' => __('Screenshot', 'vtheme'),
+		'desc' => __('This image will display inside browser mockup', 'vtheme'),
+		'id' => $prefix . 'version_control_image',
+		'type' => 'upload');
+
 	/* New Section */
 	$options[] = array(
 		'name' => __('TEAM MANAGEMENT', 'vtheme'),
@@ -201,6 +225,12 @@ function optionsframework_options() {
 		'id' => $prefix . 'team_management_content',
 		'type' => 'editor',
 		'settings' => $wp_editor_settings );
+
+	$options[] = array(
+		'name' => __('Screenshot', 'vtheme'),
+		'desc' => __('This image will display inside browser mockup', 'vtheme'),
+		'id' => $prefix . 'team_management_image',
+		'type' => 'upload');
 	
 	/* New Section */
 	$options[] = array(

@@ -39,7 +39,9 @@ get_header();?>
 						</div><!-- /content_title -->
 
 						<div class="section_content">
-							<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/images/google_chrome_flat_browser.png" alt="google_chrome_flat_browser">
+							<div class="screenshot chrome">								
+								<img class="img-responsive" src="<?php echo of_get_option('op_simple_text_editing_image');?>" alt="<?php echo of_get_option('op_simple_text_editing_title', ''); ?>">
+							</div>
 							
 							<div class="instraction">
 								<span class="ste_right_arrow">
@@ -65,8 +67,10 @@ get_header();?>
 						</div><!-- /content_title -->
 
 						<div class="section_content">
-							<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/images/white_pad.png" alt="white_pad">
-
+							<div class="screenshot ipad">								
+								<img class="img-responsive" src="<?php echo of_get_option('op_media_drag_and_drop_image');?>" alt="<?php echo of_get_option('op_media_drag_and_drop_title', ''); ?>">
+							</div>
+							
 							<div class="instraction">
 								<span class="mdd_right_arrow">
 									<p>Simply drag to resize to any wanted size</p>
@@ -93,7 +97,9 @@ get_header();?>
 						</div><!-- /content_title -->
 
 						<div class="section_content">
-							<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/images/safari_flat_browser.png" alt="safari_flat_browser">
+							<div class="screenshot firefox">								
+								<img class="img-responsive" src="<?php echo of_get_option('op_consistent_customized_styling_image');?>" alt="<?php echo of_get_option('op_consistent_customized_styling_title', ''); ?>">
+							</div>
 
 							<div class="instraction">
 								<span class="ccs_right_arrow">
@@ -113,12 +119,14 @@ get_header();?>
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="content_title white icon_version_control">
-							<h1><?php echo of_get_option('op_team_management_title', ''); ?></h1>
+							<h1><?php echo of_get_option('op_version_control_title', ''); ?></h1>
 							<p><?php echo of_get_option('op_version_control_content', ''); ?></p>
 						</div><!-- /content_title -->
 
 						<div class="section_content">
-							<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/images/vc_phone_img.png" alt="vc_phone_img">
+							<div class="screenshot none">								
+								<img class="img-responsive" src="<?php echo of_get_option('op_version_control_image');?>" alt="<?php echo of_get_option('op_version_control_title', ''); ?>">
+							</div>
 
 							<div class="instraction">
 								<span class="vc_right_arrow">
@@ -142,7 +150,9 @@ get_header();?>
 						</div><!-- /content_title -->
 
 						<div class="section_content">
-							<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/images/team_managment.png" alt="team_managment">
+							<div class="screenshot safari">								
+								<img class="img-responsive" src="<?php echo of_get_option('op_team_management_image');?>" alt="<?php echo of_get_option('op_team_management_title', ''); ?>">
+							</div>
 
 							<div class="instraction">
 								<span class="tm_right_arrow">
