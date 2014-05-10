@@ -388,7 +388,6 @@ textarea:focus{
 
 .v_signUp input{
     width: 100%;
-    margin-bottom: 10px;
 }
 
 .v_signUp input[type="submit"]{
@@ -401,11 +400,45 @@ textarea:focus{
 }
 
 #v_signUp_form{
-    display: none;
+    display: block;
 }
 
 #V_downLoad{
     display: none;
+}
+
+.error{
+    background: url(../images/icon_error.png) no-repeat 15px 10px #fff;
+    display: inline-block;
+    padding: 10px 15px 10px 45px;
+    font-family: 'proxima_novasemibold';
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 44px;
+    min-width: 200px;
+    border: 1px solid #f47743;
+    position: absolute;
+    top: -55px;
+    left: 0;
+    text-transform: uppercase;
+}
+.error:after{
+    background: url(../images/icon_arrow_error.png) no-repeat bottom center;
+    content: " ";
+    clear: both;
+    position: absolute;
+    bottom: -7px;
+    left: 30px;
+    height: 7px;
+    width: 11px;
+    z-index: 1;
+}
+
+.hide{
+    display: none !important;
+}
+.show{
+    display: block !important;
 }
 
 
@@ -543,6 +576,11 @@ textarea:focus{
     position: absolute;
     background: #0ea29d;
     z-index: 10;
+}
+
+.featured .carousel-indicators li img{
+    width: 100%;
+    height: 100%;
 }
 
 .mask{
@@ -870,6 +908,7 @@ textarea:focus{
     z-index: 10;
     display: none;
 }
+
 .select_category ul{
     padding: 0;
     margin: 0;
@@ -1560,10 +1599,10 @@ span.tm_top_arrow p{
     right: 0;
     height: 70px;
     width: 65px;
+    text-align: right;
 }
 .comment_box .cmt_pics img{
-    display: block;
-    width: 100%;
+    display: inline-block;
 }
 
 .comment_box h3{
