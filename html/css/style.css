@@ -388,7 +388,6 @@ textarea:focus{
 
 .v_signUp input{
     width: 100%;
-    margin-bottom: 10px;
 }
 
 .v_signUp input[type="submit"]{
@@ -401,11 +400,45 @@ textarea:focus{
 }
 
 #v_signUp_form{
-    display: none;
+    display: block;
 }
 
 #V_downLoad{
     display: none;
+}
+
+.error{
+    background: url(../images/icon_error.png) no-repeat 15px 10px #fff;
+    display: inline-block;
+    padding: 10px 15px 10px 45px;
+    font-family: 'proxima_novasemibold';
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 44px;
+    min-width: 200px;
+    border: 1px solid #f47743;
+    position: absolute;
+    top: -55px;
+    left: 0;
+    text-transform: uppercase;
+}
+.error:after{
+    background: url(../images/icon_arrow_error.png) no-repeat bottom center;
+    content: " ";
+    clear: both;
+    position: absolute;
+    bottom: -7px;
+    left: 30px;
+    height: 7px;
+    width: 11px;
+    z-index: 1;
+}
+
+.hide{
+    display: none !important;
+}
+.show{
+    display: block !important;
 }
 
 
