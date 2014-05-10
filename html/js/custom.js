@@ -28,10 +28,5 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    $('.select_download li').click(function(){
-        $('#v_signUp_form').toggle('slow');
-        return false;
-    });
-
 });
 

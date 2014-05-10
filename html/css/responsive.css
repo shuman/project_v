@@ -266,11 +266,18 @@
 		top: 5px;
 		left: 15px;
 		right: auto;
+		max-width: 250px;
+		width: 100%;
+		padding: 15px 10px;
 	}
 	
 	.dropdown_box:after{
 		left: 50px;
 		right: auto;
+	}
+
+	.select_download > li{
+		padding: 10px;
 	}
 
 }
