@@ -175,10 +175,17 @@
 											<form role="search" method="get" id="searchform" class="searchform" action="">
 												<div class="form-group">
 													<input type="text" value="" placeholder="email@domain.com" name="email" id="email">
+													<span class="error hide">Invalid Email</span>
+												</div><!-- /form-group -->
+												<div class="form-group">
 													<input type="text" value="" placeholder="Password" name="password" id="password">
+													<span class="error hide">Invalid Password</span>
+												</div><!-- /form-group -->
+												<div class="form-group">
 													<input type="text" value="" placeholder="Your Site URL" name="site_url" id="site_url">
-													<input type="submit" value="Send">
-												</div>
+													<span class="error hide">Invalid Site URL</span>
+												</div><!-- /form-group -->
+												<input type="submit" value="Send">
 											</form>
 										</div><!-- /v_signUp -->
 									</div><!-- /dropdown_box -->
