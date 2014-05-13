@@ -323,7 +323,6 @@
 		width: 430px;
 	}
 
-	.signUp_v .progress_bar,
 	.subscribe .form-group{
 		width: 64%;
 	}
@@ -401,7 +400,7 @@
 		position: relative;
 		left: auto;
 		bottom: 5px;
-		top: auto;
+		top: 68px;
 		display: block;
 	}
 

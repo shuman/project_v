@@ -864,7 +864,6 @@ textarea:focus{
     position: absolute;
     top: 0;
     left: 0;
-    width: 20%;
 }
 
 .signUp_v .progress_bar {
@@ -872,7 +871,6 @@ textarea:focus{
     top: 50px;
     left: 0;
     margin-bottom: 3px;
-    width: 70%;
 }
 
 .select_btn{
