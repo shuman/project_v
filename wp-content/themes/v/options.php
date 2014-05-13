@@ -324,17 +324,61 @@ function optionsframework_options() {
 		'settings' => $wp_editor_settings );
 
 
+	/* New Tab */
 	$options[] = array(
 		'name' => __('Footer', 'vtheme'),
 		'type' => 'heading' );
+	
+	/* New Section */
+	$options[] = array(
+		'name' => __('FOLLOW', 'vtheme'),
+		'desc' => __('Add your social profile links below to display the icons.', 'vtheme'),
+		'type' => 'info');
+
+	$options[] = array(
+		'name' => __('Facebook', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'facebook',
+		'type' => 'text' );
+
+	$options[] = array(
+		'name' => __('Twitter', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'twitter',
+		'type' => 'text' );
+
+	$options[] = array(
+		'name' => __('LinkedIn', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'linkedin',
+		'type' => 'text' );
+
+	$options[] = array(
+		'name' => __('Vimeo', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'vimeo',
+		'type' => 'text' );
+
+	$options[] = array(
+		'name' => __('Google+', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'google_plus',
+		'type' => 'text' );
+
+	
+	/* New Section */
+	$options[] = array(
+		'name' => __('BUILT WITH LOVE', 'vtheme'),
+		'type' => 'info');
 
 
 	$options[] = array(
-		'name' => __('Additional Text Editor', 'vtheme'),
-		'desc' => sprintf( __( 'This editor includes media button.', 'vtheme' ), 'http://codex.wordpress.org/Function_Reference/wp_editor' ),
-		'id' => 'example_editor_media',
-		'type' => 'editor',
-		'settings' => $wp_editor_settings );
+		'name' => __('Content', 'vtheme'),
+		'desc' => sprintf( __( '', 'vtheme' ) ),
+		'id' => $prefix . 'built_with_love',
+		'type' => 'text');
+	
+	
 
 	return $options;
 }

@@ -24,21 +24,41 @@
 					<div class="footer_item">
 						<h4>FOLLOW</h4>
 						<ul>
-							<li><a href="#">Facebook</a></li>
-							<li><a href="#">Twitter</a></li>
-							<li><a href="#">LinkedIn</a></li>
-							<li><a href="#">Vimeo</a></li>
-							<li><a href="#">Google+</a></li>
+							<?php
+							$facebook = of_get_option('op_facebook');
+							if( !empty($facebook) ){
+								echo '<li><a href="'.$facebook.'">Facebook</a></li>';
+							}
+							$twitter = of_get_option('op_twitter');
+							if( !empty($twitter) ){
+								echo '<li><a href="'.$twitter.'">Twitter</a></li>';
+							}
+
+							$linkedin = of_get_option('op_linkedin');
+							if( !empty($linkedin) ){
+								echo '<li><a href="'.$linkedin.'">LinkedIn</a></li>';
+							}
+
+							$vimeo = of_get_option('op_vimeo');
+							if( !empty($vimeo) ){
+								echo '<li><a href="'.$vimeo.'">Vimeo</a></li>';
+							}
+
+							$google_plus = of_get_option('op_google_plus');
+							if( !empty($google_plus) ){
+								echo '<li><a href="'.$google_plus.'">Google+</a></li>';
+							}
+							?>
 						</ul>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<div class="footer_item footer_right">
 						<h4>BUILT WITH LOVE</h4>
-						<p>Cras sit amet dignissim dui, vitae interdum libero. </p>
+						<p><?php echo of_get_option('op_built_with_love');?></p>
 						<ul class="footer_logo">
-							<li><a href="#"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="footer_logo"></a></li>
-							<li><a class="btn btn-default" href="#">DOWNLOAD</a></li>
+							<li><a href="<?php echo site_url();?>"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="footer_logo"></a></li>
+							<li><a class="btn btn-default download" href="javascript:void(0)">DOWNLOAD</a></li>
 						</ul>
 					</div>
 				</div><!-- /footer_item -->

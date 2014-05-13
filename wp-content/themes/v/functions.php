@@ -11,6 +11,35 @@ function register_session(){
 }
 add_action('init','register_session', 1);
 
+
+function theme_scripts() {
+	/* Scripts */
+	wp_enqueue_script('easing', get_stylesheet_directory_uri() . '/js/jquery.easing.1.3.js');
+	wp_enqueue_script('touchSwipe', 'http://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.4/jquery.touchSwipe.min.js');
+	wp_enqueue_script('liquid-slider', get_stylesheet_directory_uri() . '/js/jquery.liquid-slider.min.js');
+	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js');
+	wp_enqueue_script('jquery.sticky', get_stylesheet_directory_uri() . '/js/jquery.sticky.js', array( 'jquery' ));
+	wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ), '1.0');
+
+	/* Styles */
+	wp_register_style('animate', get_stylesheet_directory_uri() . '/css/animate.css');
+  	wp_enqueue_style( 'animate' );
+  	wp_register_style('fonts', get_stylesheet_directory_uri() . '/css/fonts.css');
+  	wp_enqueue_style( 'fonts' );
+	wp_register_style('bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css');
+  	wp_enqueue_style( 'bootstrap' );
+  	wp_register_style('liquid-slider', get_stylesheet_directory_uri() . '/css/liquid-slider.css');
+  	wp_enqueue_style( 'liquid-slider' );
+	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
+  	wp_enqueue_style( 'custom' );
+	wp_register_style('responsive', get_stylesheet_directory_uri() . '/css/responsive.css');
+  	wp_enqueue_style( 'responsive' );
+	wp_enqueue_style( 'style', get_stylesheet_uri() );
+	
+}
+add_action('wp_enqueue_scripts', 'theme_scripts');
+
+
 /*
  * Helper function to return the theme option value. If no value has been saved, it returns $default.
  * Needed because options are saved as serialized strings.
@@ -80,6 +109,12 @@ jQuery(document).ready(function() {
 <style type="text/css">
 	#optionsframework h4{
 		margin: 0;
+		display: inline-block;
+	}
+	#optionsframework p{
+		margin: 0 0 0 20px;
+		display: inline-block;
+		padding: 0;
 	}
 	#optionsframework .section-info{
 		background: #F1F1F1;
@@ -93,6 +128,14 @@ jQuery(document).ready(function() {
 		display: inline-block;
 		position: relative;
 		top: 20px;
+	}
+	#section-op_facebook,
+	#section-op_twitter,
+	#section-op_linkedin,
+	#section-op_vimeo,
+	#section-op_google_plus{
+		width: 45%;
+		display: inline-block;
 	}
 </style>
 <?php
@@ -236,6 +279,7 @@ function create_testimonial_post_type() {
 			),
 		'public' => true,
 		'has_archive' => true,
+		'supports' => array( 'title', 'editor', 'thumbnail' ),
 		)
 	);
 }
@@ -286,31 +330,6 @@ function vtheme_comment($comment, $args, $depth) {
 	<?php endif; ?>
 <?php
 }
-
-
-function theme_scripts() {
-	/* Scripts */
-	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js');
-	wp_enqueue_script('jquery.sticky', get_stylesheet_directory_uri() . '/js/jquery.sticky.js', array( 'jquery' ));
-	wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ), '1.0');
-
-	/* Styles */
-	wp_register_style('animate', get_stylesheet_directory_uri() . '/css/animate.css');
-  	wp_enqueue_style( 'animate' );
-  	wp_register_style('fonts', get_stylesheet_directory_uri() . '/css/fonts.css');
-  	wp_enqueue_style( 'fonts' );
-	wp_register_style('bootstrap', get_stylesheet_directory_uri() . '/css/bootstrap.css');
-  	wp_enqueue_style( 'bootstrap' );
-	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
-  	wp_enqueue_style( 'custom' );
-	wp_register_style('responsive', get_stylesheet_directory_uri() . '/css/responsive.css');
-  	wp_enqueue_style( 'responsive' );
-	wp_enqueue_style( 'style', get_stylesheet_uri() );
-	
-}
-add_action('wp_enqueue_scripts', 'theme_scripts');
-
-
 
 
 class Comment_Widget extends WP_Widget {
