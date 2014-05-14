@@ -21,18 +21,16 @@ var App = {
         Init: function(){
         
             jQuery('#sticky_slider').liquidSlider({
-                //autoSlide: true,
+                autoSlide: true,
                 autoHeight:false,
                 responsive: true,
-                hoverArrows: false,
                 mobileNavigation:false,
-                //hashLinking: true,
-                //hashTitleSelector: ".title",
+                // hoverArrows: false,
                 // hideSideArrows: true,
-                // dynamicArrows: false,
-                //autoSlideInterval: 6000,
-                //continuous: true,
-                //pauseOnHover: false,
+                dynamicArrows: false,
+                
+                autoSlideInterval: 5000,
+                pauseOnHover: true,
                 slideEaseFunction:'animate.css',
                 slideEaseDuration:1000,
                 heightEaseDuration:1000,
@@ -90,6 +88,7 @@ var App = {
             jQuery("#email").val('');
             jQuery("#password").val('');
             jQuery("#site_url").val('');
+            jQuery(".error").addClass("hide");
 
             var ele1 = jQuery('#V_downLoad');
             var ele2 = jQuery('#v_signUp_form');
@@ -115,6 +114,92 @@ var App = {
         jQuery(".video").html(embedcode);
 
         return false;
+    },
+    SignUp: {
+        hideEffect: function(ele, callback){
+            ele.addClass('fadeOutLeft');
+            ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                ele.addClass('hide').removeClass('fadeOutLeft');
+                callback(true);
+            });
+        },
+        showEffect: function(ele){
+            ele.removeClass("hide").addClass('fadeInRight');
+            ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                ele.removeClass('fadeInRight');
+            });
+        },
+        goStep1: function(){
+            App.SignUp.hideEffect(jQuery(".signUp_v ul li"), function(){
+                App.SignUp.showEffect(jQuery(".step1"));
+            });
+            return false;
+        },
+        goStep2: function(){
+            var site_url = jQuery("#s_url").val();
+            if(!site_url){
+                App.Animate.error.show( jQuery(".es_url") );
+                return false;
+            }
+
+            App.SignUp.hideEffect(jQuery(".step1"), function(){
+                App.SignUp.showEffect(jQuery(".step2"));
+            });
+            return false;
+        },
+        goStep3: function(){
+            var s_email = jQuery("#s_email").val();
+            if(!s_email){
+                App.Animate.error.show( jQuery(".s_email") );
+                return false;
+            }
+
+            App.SignUp.hideEffect(jQuery(".step2"), function(){
+                App.SignUp.showEffect(jQuery(".step3"));
+            });
+            return false;
+        },
+        goStep4: function(){
+            App.SignUp.hideEffect(jQuery(".step3"), function(){
+                App.SignUp.showEffect(jQuery(".step4"));
+            });
+            return false;
+        },
+        goStep5: function(){
+            var username = jQuery("#username").val();
+            var s_password = jQuery("#s_password").val();
+            if(!username || !s_password){
+                App.Animate.error.show( jQuery(".up_error") );
+                return false;
+            }
+
+            App.SignUp.hideEffect(jQuery(".step4"), function(){
+                App.SignUp.showEffect(jQuery(".step5"));
+            });
+            return false;
+        }
+    },
+    Animate: {
+        globalHide: function(ele){
+            ele.addClass('fadeOutUp');
+            ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                ele.css("display", "none").removeClass('fadeOutUp');
+            });
+        },
+        error: {
+            show: function(ele){
+                ele.removeClass('hide').addClass("bounceIn");
+                ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    ele.removeClass('bounceIn');
+                });
+            },
+            hide: function(ele){
+                ele.addClass('fadeOutUp');
+                ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    ele.addClass('hide').removeClass('fadeOutUp');
+                });
+            }
+        }
     }
 }
 jQuery(document).ready(function($) {
@@ -123,21 +208,26 @@ jQuery(document).ready(function($) {
     App.BlogStickySlider.Init();
     App.TestimonialSlider.Init();
 
+    //Infinit scroll manual trigger setting
     jQuery(window).unbind('.infscr');
 
-    //var api2 = jQuery.data( jQuery('#sticky_slider')[0], 'liquidSlider');
-
+    //Hide global element on click document.
     jQuery(document).on("click", "body", function(){
-        var ele = jQuery(".shy");
-        ele.addClass('fadeOutUp');
-        ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            ele.css("display", "none").removeClass('fadeOutUp');
-        });
+        App.Animate.globalHide( jQuery(".shy") );
     });
 
+    //Prevent global hide on input focus
     jQuery(document).on("click", "input", function(event){
         event.stopPropagation();
         return;
+    });
+
+    jQuery('input[type="text"]').on("focus", function(){
+        App.Animate.error.hide( jQuery('.error') );
+    });
+
+    jQuery('input[type="password"]').on("focus", function(){
+        App.Animate.error.hide( jQuery('.error') );
     });
 
     /* HEADER MENU STICKY */
@@ -155,7 +245,7 @@ jQuery(document).ready(function($) {
     
 
     /* PRODUCT DROPDOWN */
-    jQuery('.select_btn').click(function(event){
+    jQuery('.selection').click(function(event){
         event.stopPropagation();
 
         var ele = jQuery('.select_category');
@@ -187,48 +277,49 @@ jQuery(document).ready(function($) {
         return false;
     });
 
-    jQuery(".select_cms").on("click", "img", function(event){
+    jQuery("#download_form").submit(function(){
+        var email = jQuery("#email").val();
+        var password = jQuery("#password").val();
+        var site_url = jQuery("#site_url").val();
+        if(!email){
+            App.Animate.error.show( jQuery(".e_email") );
+            return false;
+        }
+
+        if(!password){
+            App.Animate.error.show( jQuery(".e_password") );
+            return false;
+        }
+
+        if(!site_url){
+            App.Animate.error.show( jQuery(".e_site_url") );
+            return false;
+        }
+        return false;
+    });
+    
+    jQuery("#email").on("focus", function(){
+        App.Animate.error.hide( jQuery(".e_email") );
+    });
+    jQuery("#password").on("focus", function(){
+        App.Animate.error.hide( jQuery(".e_password") );
+    });
+    jQuery("#site_url").on("focus", function(){
+        App.Animate.error.hide( jQuery(".e_site_url") );
+    });
+
+    jQuery(".select_cms").on("click", function(event){
         event.stopPropagation();
 
-        var imgUrl = jQuery(this).attr("src");
+        var p_type = jQuery(this).attr("rel");
+
+        var imgUrl = theme_url + '/images/icon_' + p_type + '.png';
         
         jQuery('.selected_cat img').attr("src", imgUrl);
-        return false;
-    }); //END
-
-
-    jQuery(".go_step2").click(function(){
-        jQuery('.step1').addClass('slideOutLeft');
-        jQuery('.step1').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            jQuery('.step1').hide();
-            jQuery('.step1').removeClass('slideOutLeft');
-            jQuery('.step2').show().addClass('slideInRight');
-        });
+        jQuery('#cms_type').val( p_type );
         return false;
     });
 
-    /*jQuery('.select_btn').click(function(){
-        //jQuery('.select_category').toggle('slow');
-        var el = jQuery('.select_category');
-        if( jQuery('.select_category').hasClass('collapsed') ){
-
-            jQuery('.select_category').removeClass('collapsed');
-            jQuery('.select_category').show().addClass('slideInDown');
-            jQuery('.select_category').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                jQuery('.select_category').removeClass('slideInDown');
-            });
-        }
-        else{
-            jQuery('.select_category').addClass('collapsed');
-            jQuery('.select_category').addClass('fadeOutUp');
-            jQuery('.select_category').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                jQuery('.select_category').hide();
-                jQuery('.select_category').removeClass('fadeOutUp');
-            });
-        }
-        
-        return false;
-    });*/
 
 }); //END document load
 

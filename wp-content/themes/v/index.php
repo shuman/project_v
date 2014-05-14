@@ -37,8 +37,8 @@
 									}
 									?>
 					                <div id="slide-<?php echo $i;?>" class="item <?php echo ($i == 1) ? 'active' : '';?>" style="background-image: url(<?php echo $img_url;?>);">
-					                	<h2 class="title"><i class="icon-signout"><img style="width:50px;height:50px;" src="<?php echo $thumb_url;?>"></i><span>Sign Out</span></h2>
-					                	<a class="mask" href="#">
+					                	<h2 class="title"><i><img src="<?php echo $thumb_url;?>"></i></h2>
+					                	<a class="mask" href="<?php echo get_the_permalink();?>">
 						                    <div class="featured_content">
 						                    	<div class="content_title icon_slider_blog_title">
 													<h1><?php the_title();?></h1>

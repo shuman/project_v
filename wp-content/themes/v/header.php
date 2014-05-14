@@ -20,6 +20,10 @@
 			echo ' &lsaquo; ' . sprintf( __( 'Page %s', 'angelocate' ), max( $paged, $page ) );
 		}
 	?></title>
+	<script type="text/javascript">
+		var site_url = '<?php echo site_url();?>';
+		var theme_url = '<?php echo get_stylesheet_directory_uri();?>';
+	</script>
 	<?php wp_head();?>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -42,54 +46,62 @@
 							<div class="subscribe">
 								<h1><?php echo of_get_option('op_banner_text', ''); ?></h1>
 								
-								<form action="" method="" name="signup" role="search">
+								<form action="" method="post" name="signup" role="search">
 									<div class="signUp_v">
 										<ul>
 											<li class="step1 animated">
 													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Your Site URL">
+														<input type="text" class="form-control" name="site_url" id="s_url" placeholder="Your Site URL">
+														<span class="animated error hide es_url">Invalid Site URL</span>
+														<!--div class="progress_bar"><span style="width:25%;"></span></div-->
 													</div>
-													<button class="btn-default go_step2">TRY V FREE</button>
+													<button type="button" class="btn-default" onclick="App.SignUp.goStep2()">TRY V FREE</button>
 											</li><!-- /step1 -->
 
-											<li class="step2 animated" style="display:none;">
+											<li class="step2 animated hide">
 													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Your Site URL">
+														<input type="text" class="form-control" name="email" id="s_email" placeholder="Your Email Address">
+														<span class="animated error hide s_email">Invalid Email</span>
+														<div class="progress_bar"><span onclick="App.SignUp.goStep1()" style="width:25%;"></span></div>
 													</div>
-													<button class="btn-default go_step3">TRY V FREE</button>
+													<button type="button" class="btn-default" onclick="App.SignUp.goStep3()">NEXT</button>
 											</li><!-- /step2 -->
 
-											<li class="step3 animated" style="display:none;">
+											<li class="step3 animated hide">
 												<div class="form-group">
-													<input type="text" class="form-control" placeholder="Your Site URL">
-													<a class="select_btn" href="#"></a>
-													<span class="selected_cat"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></span>
+													<input type="text" class="form-control" name="cms_type" id="cms_type" value="wordpress" placeholder="Select Type" readonly="">
+													<div class="selection">
+														<span class="select_btn"></span>
+														<span class="selected_cat"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></span>
+													</div>
 													<div class="select_category shy animated collapsed">
 														<ul>
-															<li><a href="#" class="select_cms"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
-															<li><a href="#" class="select_cms"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
-															<li><a href="#" class="select_cms"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
-															<li><a href="#" class="select_cms"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
+															<li><a href="#" class="select_cms" rel="wordpress"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
+															<li><a href="#" class="select_cms" rel="joomla"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
+															<li><a href="#" class="select_cms" rel="drupal"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
+															<li><a href="#" class="select_cms" rel="magento"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
 														</ul>
 													</div>
+													<div class="progress_bar"><span onclick="App.SignUp.goStep2()" style="width:50%;"></span></div>
 												</div>
-												<button class="btn-default go_step4">TRY V FREE</button>
+												<button type="button" class="btn-default" onclick="App.SignUp.goStep4()">NEXT</button>
 											</li><!-- /step3 -->
 
-											<li class="step4 animated" style="display:none;">
+											<li class="step4 animated hide">
 													<div class="form-group">
-														<input type="text" class="form-control" placeholder="Username">
-														<input type="text" class="form-control" placeholder="Password">
+														<input type="text" class="form-control" name="username" id="username" placeholder="Username">
+														<input type="password" class="form-control" name="password" id="s_password" placeholder="Password">
+														<span class="animated error hide up_error">Invalid Username or Password</span>
+														<div class="progress_bar"><span onclick="App.SignUp.goStep3()" style="width:75%;"></span></div>
 													</div>
-													<button class="btn-default go_step5">Send</button>
+													<button type="button" class="btn-default" onclick="App.SignUp.goStep5()">Send</button>
 											</li><!-- /step4 -->
 
-											<li class="step5 animated" style="display:none;">
-												<h1>Congratulations</h1> <a href="#">Your Download link has been sent to your email</a>
+											<li class="step5 animated hide">
+												<h1>Congratulations</h1> <span class="msg">Your Download link has been sent to your email</span>
 											</li><!-- /step5 -->
 											
 										</ul>
-										<div class="progress_bar"><span></span></div>
 									</div>
 								</form>
 							</div><!-- /subscribe -->
@@ -154,13 +166,20 @@
 									<div id="v_signUp_form" class="animated shy dropdown_box">
 										<div class="v_signUp">
 											<h4>WHERE SHOULD WE SEND THE LINK?</h4>
-											<form role="search" method="get" id="searchform" class="searchform" action="">
+											<form method="post" id="download_form" action="">
 												<div class="form-group">
-													<input type="text" value="" placeholder="email@domain.com" name="email" id="email">
-													<input type="password" value="" placeholder="Password" name="password" id="password">
-													<input type="text" value="" placeholder="Your Site URL" name="site_url" id="site_url">
-													<input type="submit" value="Send">
-												</div>
+													<input type="text" name="email" id="email" placeholder="email@domain.com">
+													<span class="animated error hide e_email">Invalid Email</span>
+												</div><!-- /form-group -->
+												<div class="form-group">
+													<input type="password" name="password" id="password" placeholder="Password">
+													<span class="animated error hide e_password">Invalid Password</span>
+												</div><!-- /form-group -->
+												<div class="form-group">
+													<input type="text" name="site_url" id="site_url" placeholder="Your Site URL">
+													<span class="animated error hide e_site_url">Invalid Site URL</span>
+												</div><!-- /form-group -->
+												<input type="submit" name="submit" value="Send">
 											</form>
 										</div><!-- /v_signUp -->
 									</div>
