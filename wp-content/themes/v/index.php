@@ -57,8 +57,12 @@
 				                <?php wp_reset_postdata(); ?>
 				            </div><!--//carousel-inner-end-->
 				            <div class="slider_controls">
-								<a class="slider_nav_left" onclick="App.BlogStickySlider.SlidePrev()" href="javascript:void(0)" data-slide="prev"></a>
-								<a class="slider_nav_right" onclick="App.BlogStickySlider.SlideNext()" href="javascript:void(0)" data-slide="next"></a>
+								<a class="slider_nav_left" onclick="App.BlogStickySlider.SlidePrev()" href="javascript:void(0)" data-slide="prev">
+                  <span class="arrow"></span>
+                </a>
+								<a class="slider_nav_right" onclick="App.BlogStickySlider.SlideNext()" href="javascript:void(0)" data-slide="next">
+                  <span class="arrow"></span>
+                </a>
 							</div>
 				        </div><!--//carousel-end-->
 					</div><!-- /slide -->
@@ -69,16 +73,19 @@
 		<div class="blog_content clearfix">
 			<div class="container">
 				<div class="row">
-					<div class="col-lg-8 col-md-8 col-sm-8">
-						<div class="blog_container">
-							<?php $query = new WP_Query( array( 'post__not_in' => get_option( 'sticky_posts' ) ) ); ?>
-							<?php if ( $query->have_posts() ) :  while ( $query->have_posts() ) : $query->the_post(); ?>
-								<?php get_template_part( 'content', get_post_format() ); ?>
-							<?php endwhile; endif; ?>
-							<?php wp_reset_postdata(); ?>
-						</div><!-- /blog_container -->
-						<div class="post_navs"><?php posts_nav_link('', 'Prev', '<span class="btn btn-default load_more">LOAD MORE POSTS</span>'); ?></div>
-					</div>
+          <div class="col-lg-8 col-md-8 col-sm-8">
+            <div class="blog_container">
+              <?php $query = new WP_Query( array( 'post__not_in' => get_option( 'sticky_posts' ) ) ); ?>
+              <?php if ( $query->have_posts() ) :  while ( $query->have_posts() ) : $query->the_post(); ?>
+              <?php get_template_part( 'content', get_post_format() ); ?>
+              <?php endwhile; endif; ?>
+              <?php wp_reset_postdata(); ?>
+              <div class="post_navs">
+                <?php posts_nav_link('', 'Prev', '<span class="btn btn-default load_more">LOAD MORE POSTS</span>'); ?>
+              </div>
+            </div>
+            <!-- /blog_container -->
+          </div>
 					<div class="col-lg-4 col-md-4 col-sm-4">
 						<?php get_sidebar();?>
 					</div>

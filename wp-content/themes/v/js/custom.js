@@ -23,6 +23,7 @@ var App = {
                 autoSlide: true,
                 autoHeight:false,
                 responsive: true,
+                hoverArrows:false,
                 mobileNavigation:false,
                 autoSlideInterval: 5000,
                 pauseOnHover: true,
@@ -46,7 +47,6 @@ var App = {
             api.updateClass(e);
             jQuery(".slide_nav li").removeClass("active");
             e.parent().addClass('active');
-            //alert(e);
         },
         SlideNext: function(){
             var o = $("#sticky_slider-nav-ul").find(".current").next();
@@ -300,18 +300,18 @@ jQuery(document).ready(function($) {
 
 
     /* Bog top slider hover effect */
-    jQuery("#featured_v").on("mouseenter", function(){
-        jQuery(".mask").addClass('hover');
-        if ( jQuery("#sticky_slider-nav-ul").find("li").length > 1 ){
-            jQuery(".slider_controls").show();
-        }
+    if ( jQuery("#sticky_slider-nav-ul").find("li").length > 1 )
+        jQuery(".slider_controls").show();
 
+    jQuery("#featured_v").on("mouseenter", function(){
+        jQuery(".currentPanel .mask").addClass('hover');
+        jQuery(".slider_controls").addClass('hover');
         //App.BlogStickySlider.effect.show( jQuery(".featured_content") );
     });
 
     jQuery("#featured_v").on("mouseleave", function(){
         jQuery(".mask").removeClass('hover');
-        jQuery(".slider_controls").hide();
+        jQuery(".slider_controls").removeClass('hover');
         //App.BlogStickySlider.effect.hide( jQuery(".featured_content") );
     }); //END
     
