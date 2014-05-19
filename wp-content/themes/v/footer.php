@@ -4,25 +4,25 @@
 			<div class="row">
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
-						<h4>PRODUCT</h4>
+						<h3>PRODUCT</h3>
 						<?php wp_nav_menu( array( 'theme_location' => 'product_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
-						<h4>USERS</h4>
+						<h3>USERS</h3>
 						<?php wp_nav_menu( array( 'theme_location' => 'users_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
-						<h4>COMPANY</h4>
+						<h3>COMPANY</h3>
 						<?php wp_nav_menu( array( 'theme_location' => 'company_menu' ) ); ?>
 					</div>
 				</div><!-- /footer_item -->
 				<div class="col-lg-2 col-md-2 col-sm-2">
 					<div class="footer_item">
-						<h4>FOLLOW</h4>
+						<h3>FOLLOW</h3>
 						<ul>
 							<?php
 							$facebook = of_get_option('op_facebook');
@@ -54,12 +54,13 @@
 				</div><!-- /footer_item -->
 				<div class="col-lg-4 col-md-4 col-sm-4">
 					<div class="footer_item footer_right">
-						<h4>BUILT WITH LOVE</h4>
+						<h3>BUILT WITH LOVE</h3>
 						<p><?php echo of_get_option('op_built_with_love');?></p>
 						<ul class="footer_logo">
 							<li><a href="<?php echo site_url();?>"><img src="<?php echo get_stylesheet_directory_uri();?>/images/footer_logo.png" alt="footer_logo"></a></li>
-							<li><a class="btn btn-default download" href="javascript:void(0)">DOWNLOAD</a></li>
+							<li><a id="btn_donwload_bot" class="btn btn-default download" href="javascript:void(0)">DOWNLOAD</a></li>
 						</ul>
+						<div id="download_bot"></div>
 					</div>
 				</div><!-- /footer_item -->
 			</div><!-- /row -->
@@ -82,7 +83,56 @@
 			</div><!-- /row -->
 		</div><!-- /container -->
 	</section><!-- /copyright -->
-	
+	<script id="download_html" type="text/xml">
+		<div id="V_downLoad" class="animated dropdown_box shy" style="display:none;">
+			<ul class="select_download">
+				<li class="v_wordpress">
+					<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'wordpress');">
+						<h4>V FOR WORDPRESS</h4>
+						<span>Lorem Ipsum Dolor Sit Amet</span>
+					</a>
+				</li>
+				<li class="v_drupal">
+					<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'drupal');">
+						<h4>V FOR DRUPAL</h4>
+						<span>Lorem Ipsum Dolor Sit Amet</span>
+					</a>
+				</li>
+				<li class="v_joomla">
+					<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'joomla');">
+						<h4>V FOR JOOMLA</h4>
+						<span>Lorem Ipsum Dolor Sit Amet</span>
+					</a>
+				</li>
+				<li class="v_magento">
+					<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'magento');">
+						<h4>V FOR MAGENTO</h4>
+						<span>Lorem Ipsum Dolor Sit Amet</span>
+					</a>
+				</li>
+			</ul><!-- /select_download -->
+		</div>
+		<div id="v_signUp_form" class="animated shy dropdown_box" style="display:none;">
+			<div class="v_signUp">
+				<h4>WHERE SHOULD WE SEND THE LINK?</h4>
+				<form method="post" id="download_form" action="">
+					<div class="form-group">
+						<input type="text" name="email" id="email" class="input" placeholder="email@domain.com">
+						<span class="animated error hide d_email">Invalid Email</span>
+					</div><!-- /form-group -->
+					<div class="form-group">
+						<input type="password" name="password" id="password" class="input" placeholder="Password">
+						<span class="animated error hide d_password">Invalid Password</span>
+					</div><!-- /form-group -->
+					<div class="form-group">
+						<input type="text" name="site_url" id="site_url" placeholder="Your Site URL">
+						<span class="animated error hide d_site_url">Invalid Site URL</span>
+					</div><!-- /form-group -->
+					<input type="submit" name="submit" value="Send">
+				</form>
+			</div><!-- /v_signUp -->
+		</div>
+	</script>
 	
 	<a class="scrollup" id="linkTop" href="#"></a>
 	<?php wp_footer();?>

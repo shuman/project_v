@@ -5,7 +5,6 @@
 			<input type="submit" id="searchsubmit" class="icon_search" value="">
 		</div>
 	</form>
-
 	<?php dynamic_sidebar('sidebar'); ?>
 	
 </div><!-- /sidebar -->

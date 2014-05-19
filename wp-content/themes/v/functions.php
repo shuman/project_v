@@ -19,7 +19,8 @@ function theme_scripts() {
 	wp_enqueue_script('liquid-slider', get_stylesheet_directory_uri() . '/js/jquery.liquid-slider.min.js');
 	wp_enqueue_script('bootstrap', get_stylesheet_directory_uri() . '/js/bootstrap.js');
 	wp_enqueue_script('jquery.sticky', get_stylesheet_directory_uri() . '/js/jquery.sticky.js', array( 'jquery' ));
-	wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js', array( 'jquery' ), '1.0');
+	wp_enqueue_script('jquery.timeago', get_stylesheet_directory_uri() . '/js/jquery.timeago.js', array( 'jquery' ));
+	wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/js/custom.js?'.time(), array( 'jquery' ), '1.0');
 
 	/* Styles */
 	wp_register_style('animate', get_stylesheet_directory_uri() . '/css/animate.css');
@@ -30,7 +31,7 @@ function theme_scripts() {
   	wp_enqueue_style( 'bootstrap' );
   	wp_register_style('liquid-slider', get_stylesheet_directory_uri() . '/css/liquid-slider.css');
   	wp_enqueue_style( 'liquid-slider' );
-	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css');
+	wp_register_style('custom', get_stylesheet_directory_uri() . '/css/custom.css?'.time() );
   	wp_enqueue_style( 'custom' );
 	wp_register_style('responsive', get_stylesheet_directory_uri() . '/css/responsive.css');
   	wp_enqueue_style( 'responsive' );
@@ -269,6 +270,13 @@ add_filter( 'default_content', 'faq_custom_content_text' );
 ***************************************************************************** */
 
 
+function new_excerpt_more( $more ) {
+	return '...';
+}
+add_filter('excerpt_more', 'new_excerpt_more');
+
+
+
 add_action( 'init', 'create_testimonial_post_type' );
 function create_testimonial_post_type() {
 	register_post_type( 'testimonial',
@@ -379,8 +387,8 @@ class Comment_Widget extends WP_Widget {
 					<div class="cmt_pics"><?php echo get_avatar( $comment->comment_author_email, 65, $default_avatar, $comment->comment_author ); ?></div>
 					<a href="<?php echo get_permalink($comment->ID);?>"><h3><?php echo $comment->post_title;?></h3></a>
 					<div class="post_meta">
-						<span class="post_comments"><?php echo get_comments_number($comment->ID);?></span><!-- /post_comments -->
-						<span class="post_share">0</span><!-- /post_share -->
+						<span class="post_comments"><?php echo get_parent_comment_count($comment->ID); ?></span><!-- /post_comments -->
+						<span class="post_share"><?php echo get_child_comment_count($comment->ID); ?></span><!-- /post_share -->
 					</div><!-- /meta -->
 				</div>
 				<?php
@@ -430,3 +438,52 @@ add_action( 'widgets_init', function(){
 add_action('widgets_init',
      create_function('', 'return register_widget("Comment_Widget");')
 );
+
+function theme_get_archives_link ( $link_html ) {
+    global $wp;
+    static $current_url;
+    if ( empty( $current_url ) ) {
+        $current_url = add_query_arg( $_SERVER['QUERY_STRING'], '', home_url( $wp->request ) );
+    }
+    if ( stristr( $link_html, $current_url ) !== false ) {
+        $link_html = preg_replace( '/(<[^\s>]+)/', '\1 class="current"', $link_html, 1 );
+    }
+    return $link_html;
+}
+add_filter('get_archives_link', 'theme_get_archives_link');
+
+
+function get_parent_comment_count($id){
+    global $wpdb;
+    $query = "SELECT COUNT(comment_post_id) AS count FROM $wpdb->comments WHERE `comment_approved` = 1 AND `comment_post_ID` = $id AND `comment_parent` = 0";
+    $parents = $wpdb->get_row($query);
+    return $parents->count;
+}
+
+function get_child_comment_count($id){
+    global $wpdb;
+    $query = "SELECT COUNT(comment_post_id) AS count FROM $wpdb->comments WHERE `comment_approved` = 1 AND `comment_post_ID` = $id AND `comment_parent` != 0";
+    $child = $wpdb->get_row($query);
+    return $child->count;
+}
+
+// ============================================================================================================
+//					Ajax Functions
+// ============================================================================================================
+
+add_action("wp_ajax_nopriv_getsiteinfo", "getsiteinfo");
+add_action("wp_ajax_getsiteinfo", "getsiteinfo");
+function getsiteinfo(){
+	header('Content-Type: application/json');
+
+	$output = array();
+
+	$output['status'] = 'OK';
+	$cms = array('wordpress', 'joomla', 'drupal', 'magento');
+	$output['cms'] = $cms[array_rand($cms)];
+
+	echo json_encode($output);
+	exit();	
+}
+
+

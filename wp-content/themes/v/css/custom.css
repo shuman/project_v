@@ -147,6 +147,16 @@ input[type="submit"],
         box-sizing: border-box;
 }
 
+.btn-default.disabled, 
+.btn-default[disabled], 
+.btn-default.disabled:hover, 
+.btn-default[disabled]:hover, 
+.btn-default.disabled.active{
+    background: #18bcb6;
+    color: #FFF;
+    border-bottom: 3px solid #089792;
+}
+
 input[type="submit"]:active,
 input[type="submit"]:focus,
 input[type="submit"]:hover,
@@ -184,7 +194,7 @@ textarea:focus{
     width: 100%;
     height: 80px;
     display: block;
-    z-index: 100;
+    z-index: 9999;
 }
 
 .head{
@@ -295,6 +305,7 @@ textarea:focus{
 }
 
 .dropdown_box h4{
+    color: #000;
     font-family: 'proxima_novasemibold';
     font-size: 16px;
     font-weight: normal;
@@ -343,6 +354,8 @@ textarea:focus{
 }
 
 .select_download li a{
+    color: #000;
+    line-height: normal;
     font-family: 'proxima_novasemibold';
     display: block;
     height: 50px;
@@ -360,24 +373,25 @@ textarea:focus{
     text-transform: capitalize;
 }
 
+.select_download li  a{
+    padding-left: 50px !important;
+    line-height: normal !important;
+}
+
 .select_download li.v_wordpress a{
     background: url(../images/download_icon_wp.png) no-repeat left center;
-    padding-left: 50px;
 }
 
 .select_download li.v_drupal a{
     background: url(../images/download_icon_drupal.png) no-repeat left center;
-    padding-left: 50px;
 }
 
 .select_download li.v_joomla a{
     background: url(../images/download_icon_joomla.png) no-repeat left center;
-    padding-left: 50px;
 }
 
 .select_download li.v_magento a{
     background: url(../images/download_icon_magento.png) no-repeat left center;
-    padding-left: 50px;
 }
 
 .v_signUp{
@@ -402,14 +416,6 @@ textarea:focus{
     height: 36px;
     line-height: 36px;
     padding: 0 25px;
-}
-
-#v_signUp_form{
-    display: none;
-}
-
-#V_downLoad{
-    display: none;
 }
 
 .error{
@@ -438,6 +444,10 @@ textarea:focus{
     height: 7px;
     width: 11px;
     z-index: 1;
+}
+
+.error.p_error{
+    left: 236px
 }
 
 .hide{
@@ -502,6 +512,7 @@ textarea:focus{
     margin: 0 auto;
     text-align: center;
 }
+
 .featured .item .featured_content .content_title{
     padding: 90px 0 0;
     margin-bottom: 0;
@@ -550,6 +561,24 @@ textarea:focus{
     color: #fff;
 }
 
+.go_back{
+    float: right;
+    width: 100px;
+    text-align: right;
+}
+.go_back a{
+    padding: 0 15px;
+    line-height: 36px;
+    height: 36px;
+}
+
+#featured_v{
+    position: relative;
+}
+
+.slider_controls{
+    display: none;
+}
 .slider_controls a{
     background: url(../images/icon_slider_controll_nav.png) no-repeat top left;
     height: 36px;
@@ -561,14 +590,16 @@ textarea:focus{
 }
 
 .slider_controls a.slider_nav_left{
-    background-position: 0 0;
+    /*background-position: 0 0;*/
+    background-position: 0 -36px;
 }
 .slider_controls a.slider_nav_left:hover{
     background-position: 0 -36px;
 }
 
 .slider_controls a.slider_nav_right{
-    background-position: -21px 0;
+    /*background-position: -21px 0;*/
+    background-position: -21px -36px;
     left: auto;
     right: 15px;
 }
@@ -914,8 +945,8 @@ textarea:focus{
 .selection{
     background: #f4f4f4;
     border: 1px solid #ececec;
-    width: 85px;
-    height: 42px;
+    width: 75px;
+    height: 36px;
     position: absolute;
     top: 4px;
     right: 5px;
@@ -927,11 +958,11 @@ textarea:focus{
     height: 20px;
     float: right;
     display: inline-block;
-    margin: 11px 8px 0 0;
+    margin: 8px 8px 0 0;
 }
 
 .selected_cat{
-    margin: 8px 0 0 10px;
+    margin: 5px 0 0 10px;
     display: inline-block;
     height: 25px;
     width: 25px;
@@ -943,14 +974,14 @@ textarea:focus{
 }
 
 .select_category{
-    background: none repeat scroll 0 0 #FFFFFF;
+    background: none repeat scroll 0 0 #F4F4F4;
     border: 1px solid #ECECEC;
     padding: 0;
     position: absolute;
     right: 5px;
     text-align: left;
-    top: 45px;
-    width: 85px;
+    top: 39px;
+    width: 75px;
     z-index: 10;
     display: none;
 }
@@ -987,13 +1018,13 @@ textarea:focus{
 }
 
 
-.subscribe ul li.step4 input{
+.subscribe ul li.step2 input{
     display: inline-block;
     float: left;
     margin-right: 4%;
     width: 48%;
 }
-.subscribe ul li.step4 input[type="password"]{
+.subscribe ul li.step2 input[type="password"]{
     margin-right: 0;
 }
 
@@ -1004,7 +1035,7 @@ textarea:focus{
     margin-bottom: 0;
     line-height: normal;
 }
-.signUp_v .step5 .msg{
+.signUp_v .step3 .msg{
     padding: 0 20px;
     color: #fff;
     line-height: 20px;
@@ -1284,7 +1315,7 @@ span.tm_top_arrow{
     width: 100%;
     position: absolute;
     right: 0;
-    top: -20px;
+    top: -40px;
 }
 span.tm_top_arrow p{
     width: 100%;
@@ -1465,6 +1496,7 @@ span.tm_top_arrow p{
 .blog_post .post_title h2{
     margin-bottom: 0;
     line-height: 24px;
+    text-transform: uppercase;
 }
 
 .content_title span,
@@ -1472,14 +1504,13 @@ span.tm_top_arrow p{
     font-size: 13px;
     color: #cdcdcd;
     line-height: normal;
-    display: block;
+    display: inline-block;
 }
 
 .blog_post p{
     font-size: 16px;
     line-height: 24px;
     color: #000;
-    font-weight: bold;
     margin-bottom: 15px;
 }
 
@@ -1619,10 +1650,15 @@ span.tm_top_arrow p{
     z-index: 10;
 }
 
+.widget ul li.current,
+.widget ul li.current-cat,
 .widget ul li.current-menu-item,
 .widget ul li:hover{
     color: #0ea29d;
 }
+
+.widget ul li.current:before,
+.widget ul li.current-cat:before,
 .widget ul li.current-menu-item:before,
 .widget ul li:hover:before{
     background: url(../images/sidebar_widget_list_hover.png) no-repeat center center;
@@ -1725,7 +1761,7 @@ span.tm_top_arrow p{
     margin-bottom: 30px;
 }
 
-#footer h4{
+#footer .footer_item h3{
     font-size: 16px;
     color: #999;
     margin-bottom: 15px;
@@ -1750,7 +1786,6 @@ span.tm_top_arrow p{
     font-size: 16px;
     line-height: 32px;
     color: #fff;
-    padding: 0;
     display: block;
     font-weight: normal;
 }
@@ -1782,6 +1817,21 @@ span.tm_top_arrow p{
 
 #footer .footer_right{
     text-align: center !important;
+    position: relative;
+}
+
+.footer_right #V_downLoad{
+    top: -180px;
+}
+
+.footer_right #v_signUp_form{
+    top: -160px;
+}
+
+.footer_right .dropdown_box:after{
+    background: url("../images/down_arrow_bot.png") no-repeat scroll center top rgba(0, 0, 0, 0);
+    top: auto;
+    bottom: -15px;
 }
 
 /* copyright */
@@ -1998,6 +2048,7 @@ span.tm_top_arrow p{
 }
 .screenshot img{
     max-width: 100%;
+    max-height: 530px;
 }
 
 .post_navs a{
@@ -2028,12 +2079,12 @@ span.tm_top_arrow p{
 .ls-nav ul li{
     display: inline-block;
     position: relative;
-    width: 60px;
+    width: 50px;
     height: 50px;
 }
 
 .ls-nav ul li a{
-    width: 60px;
+    width: 50px;
     height: 50px;
     padding: 0 2px;
     margin: 0;
@@ -2051,14 +2102,15 @@ span.tm_top_arrow p{
 
 #sticky_slider-nav-ul li img{
     max-width: 100%;
+    max-height: 100%;
 }
 
 .ls-nav ul li.current a:after{
     content: " ";
     clear: both;
-    width: 56px;
+    width: 46px;
     height: 2px;
-    bottom: 0px;
+    bottom: 4px;
     left: 2px;
     position: absolute;
     background: #0ea29d;
@@ -2089,3 +2141,31 @@ span.tm_top_arrow p{
     background-image: url(../images/icon_share_slider_hover.png);
 }
 
+#infscr-loading{
+    text-align: center;
+}
+#infscr-loading em{
+    display: none;
+}
+#infscr-loading em img{
+    position: relative;
+    left: -25px;
+}
+
+input.form-control:focus, input:focus, select:focus, textarea:focus {
+    border: 1px solid #0ea29d;
+}
+
+.testimonial .owner_pic .frame { 
+    width:100%; 
+    height:100%; 
+}
+
+.owner_pic { 
+    height:200px; 
+    width:200px; 
+}
+
+.navbar-toggle { 
+    border-radius:0px 
+}

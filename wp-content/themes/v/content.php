@@ -22,7 +22,7 @@
 
 	<div class="post_title">
 		<h2><?php the_title();?></h2>
-		<span><?php echo get_the_category_list(', '); ?> / <?php echo get_the_date(); ?></span>
+		<div><span><?php echo get_the_category_list(', '); ?> / </span> <span class="dt" title="<?php echo date( "Y-m-d H:i:s", strtotime(get_the_date().' '.get_the_time()) );?>"><?php the_date();?> <?php the_time(); ?></span></div>
 	</div><!-- /post_title -->
 
 	<div class="post_content">
@@ -32,7 +32,7 @@
 		</div>
 	</div><!-- /post_content -->
 	<div class="post_meta">
-		<span class="post_comments"><?php comments_number( '0', '1', '%' ); ?></span><!-- /post_comments -->
-		<span class="post_share">0</span><!-- /post_share -->
+		<span class="post_comments"><?php echo get_parent_comment_count($post->ID); ?></span><!-- /post_comments -->
+		<span class="post_share"><?php echo get_child_comment_count($post->ID); ?></span><!-- /post_share -->
 	</div><!-- /post_meta -->
 </div><!-- /blog_post -->

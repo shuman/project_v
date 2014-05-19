@@ -46,6 +46,9 @@
 		max-width: 750px;
 	}
 
+	.dropdown_box{
+		right: 18px;
+	}
 }
 
 
@@ -76,6 +79,15 @@
 		max-width: 330px;
 	}
 
+	.footer_right #V_downLoad{
+	    top: -85px;
+	    right: 45px;
+	}
+
+	.footer_right #v_signUp_form{
+	    top: -65px;
+	    right: 45px;
+	}
 }
 
 
@@ -260,7 +272,19 @@
 		font-size: 20px;
 	}
 	
+	.error{
+		font-size: 14px;
+	}
 
+	.error.p_error{
+		left: 219px;
+	}
+
+
+	.footer_right .dropdown_box{
+    	top: -160px;
+    	right: 47px;
+	}
 
 }
 
@@ -282,6 +306,30 @@
 	.signUp_v,
 	.subscribe ul li{
 		width: 500px;
+	}
+
+	.subscribe ul li.step2 .form-group{
+		float: none;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 350px;
+	}
+
+	.subscribe ul li.step2 input{
+		float: none;
+		margin: 0 0 10px;
+		width: 100%;
+	}
+
+	.subscribe ul li.step2 .btn-default{
+		float: none;
+		width: 100%;
+		max-width: 350px;
+	}
+
+	.error.p_error{
+		top: 0;
+		left: 0;
 	}
 }
 
@@ -434,6 +482,18 @@
 	.subscribe ul li{
 		width: 250px;
 	}
+
+	.footer_right .dropdown_box{
+    	right: 0px;
+    	width: 275px;
+	}
+	.footer_right #V_downLoad{
+	    top: -85px;
+	}
+
+	.footer_right #v_signUp_form{
+	    top: -84px;
+	}
 }
 
 @media only screen and (max-width: 240px){
@@ -455,15 +515,11 @@
 	}
 }
 
-
-
 @media only screen and (min-width:768px){
-	
 	
 }
 
 @media only screen and (min-width:992px){
-
 }
 
 @media only screen and (min-width:1200px){
@@ -485,4 +541,7 @@
 		max-width: 180px;
 	}
 	
+	.dropdown_box{
+		right: 5px;
+	}
 }

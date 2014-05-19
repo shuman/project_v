@@ -23,6 +23,7 @@
 	<script type="text/javascript">
 		var site_url = '<?php echo site_url();?>';
 		var theme_url = '<?php echo get_stylesheet_directory_uri();?>';
+		var ajax_url = '<?php echo admin_url("admin-ajax.php"); ?>';
 	</script>
 	<?php wp_head();?>
 
@@ -50,56 +51,42 @@
 									<div class="signUp_v">
 										<ul>
 											<li class="step1 animated">
-													<div class="form-group">
-														<input type="text" class="form-control" name="site_url" id="s_url" placeholder="Your Site URL">
-														<span class="animated error hide es_url">Invalid Site URL</span>
-														<!--div class="progress_bar"><span style="width:25%;"></span></div-->
+												<div class="form-group">
+													<input type="text" class="form-control input" name="site_url" id="s_url" placeholder="Your Site URL">
+													<span id="s_url_error" class="animated error hide">Invalid Site URL</span>
+													<input type="hidden" name="cms_type" id="cms_type" value="">
+													<div class="selection hide">
+														<span class="select_btn"></span>
+														<span class="selected_cat"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></span>
 													</div>
-													<button type="button" class="btn-default" onclick="App.SignUp.goStep2()">TRY V FREE</button>
+													<span id="s_cms_error" class="animated error hide">Select CMS Type</span>
+
+													<div class="select_category shy animated collapsed">
+														<ul>
+															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('wordpress')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
+															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('joomla')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
+															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('drupal')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
+															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('magento')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
+														</ul>
+													</div>
+													<div class="progress_bar hide"><span id="progress_percent" style="width:0%;"></span></div>
+												</div>
+												<button type="button" class="btn-default" onclick="App.SignUp.goStep2()">TRY V FREE</button>
 											</li><!-- /step1 -->
 
 											<li class="step2 animated hide">
 													<div class="form-group">
-														<input type="text" class="form-control" name="email" id="s_email" placeholder="Your Email Address">
-														<span class="animated error hide s_email">Invalid Email</span>
-														<div class="progress_bar"><span onclick="App.SignUp.goStep1()" style="width:25%;"></span></div>
+														<input type="text" class="form-control input" name="s_email" id="s_email" placeholder="Username">
+														<span id="s_email_error" class="animated error hide">Invalid Email</span>
+														<input type="password" class="form-control input" name="password" id="s_password" placeholder="Password">
+														<span id="s_password_error" class="animated error hide p_error">Invalid Password</span>
 													</div>
-													<button type="button" class="btn-default" onclick="App.SignUp.goStep3()">NEXT</button>
+													<button type="button" class="btn-default btn_send" onclick="App.SignUp.goStep3()">Send</button>
 											</li><!-- /step2 -->
 
 											<li class="step3 animated hide">
-												<div class="form-group">
-													<input type="text" class="form-control" name="cms_type" id="cms_type" value="wordpress" placeholder="Select Type" readonly="">
-													<div class="selection">
-														<span class="select_btn"></span>
-														<span class="selected_cat"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></span>
-													</div>
-													<div class="select_category shy animated collapsed">
-														<ul>
-															<li><a href="#" class="select_cms" rel="wordpress"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
-															<li><a href="#" class="select_cms" rel="joomla"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
-															<li><a href="#" class="select_cms" rel="drupal"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
-															<li><a href="#" class="select_cms" rel="magento"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
-														</ul>
-													</div>
-													<div class="progress_bar"><span onclick="App.SignUp.goStep2()" style="width:50%;"></span></div>
-												</div>
-												<button type="button" class="btn-default" onclick="App.SignUp.goStep4()">NEXT</button>
-											</li><!-- /step3 -->
-
-											<li class="step4 animated hide">
-													<div class="form-group">
-														<input type="text" class="form-control" name="username" id="username" placeholder="Username">
-														<input type="password" class="form-control" name="password" id="s_password" placeholder="Password">
-														<span class="animated error hide up_error">Invalid Username or Password</span>
-														<div class="progress_bar"><span onclick="App.SignUp.goStep3()" style="width:75%;"></span></div>
-													</div>
-													<button type="button" class="btn-default" onclick="App.SignUp.goStep5()">Send</button>
-											</li><!-- /step4 -->
-
-											<li class="step5 animated hide">
 												<h1>Congratulations</h1> <span class="msg">Your Download link has been sent to your email</span>
-											</li><!-- /step5 -->
+											</li><!-- /step3 -->
 											
 										</ul>
 									</div>
@@ -134,55 +121,8 @@
 
 								<div id="responsive_nav" class="collapse navbar-collapse">
 									<?php wp_nav_menu( array( 'theme_location' => 'primary_menu', 'menu_class' => 'nav navbar-nav' ) ); ?>
+									<div id="download_top"></div>
 
-									<div id="V_downLoad" class="animated dropdown_box shy">
-										<ul class="select_download">
-											<li class="v_wordpress">
-												<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'wordpress');">
-													<h4>V FOR WORDPRESS</h4>
-													<span>Lorem Ipsum Dolor Sit Amet</span>
-												</a>
-											</li>
-											<li class="v_drupal">
-												<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'drupal');">
-													<h4>V FOR DRUPAL</h4>
-													<span>Lorem Ipsum Dolor Sit Amet</span>
-												</a>
-											</li>
-											<li class="v_joomla">
-												<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'joomla');">
-													<h4>V FOR JOOMLA</h4>
-													<span>Lorem Ipsum Dolor Sit Amet</span>
-												</a>
-											</li>
-											<li class="v_magento">
-												<a href="javascript:void(0)" onclick="App.Download.showForm(event, 'magento');">
-													<h4>V FOR MAGENTO</h4>
-													<span>Lorem Ipsum Dolor Sit Amet</span>
-												</a>
-											</li>
-										</ul><!-- /select_download -->
-									</div>
-									<div id="v_signUp_form" class="animated shy dropdown_box">
-										<div class="v_signUp">
-											<h4>WHERE SHOULD WE SEND THE LINK?</h4>
-											<form method="post" id="download_form" action="">
-												<div class="form-group">
-													<input type="text" name="email" id="email" placeholder="email@domain.com">
-													<span class="animated error hide e_email">Invalid Email</span>
-												</div><!-- /form-group -->
-												<div class="form-group">
-													<input type="password" name="password" id="password" placeholder="Password">
-													<span class="animated error hide e_password">Invalid Password</span>
-												</div><!-- /form-group -->
-												<div class="form-group">
-													<input type="text" name="site_url" id="site_url" placeholder="Your Site URL">
-													<span class="animated error hide e_site_url">Invalid Site URL</span>
-												</div><!-- /form-group -->
-												<input type="submit" name="submit" value="Send">
-											</form>
-										</div><!-- /v_signUp -->
-									</div>
 								</div><!-- /.navbar-collapse -->
 
 							</nav>
