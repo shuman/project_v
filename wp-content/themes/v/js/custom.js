@@ -114,20 +114,29 @@ var App = {
             var ele2 = jQuery('#v_signUp_form');
             ele1.hide();
             ele2.show();
-
-            /*ele1.addClass('fadeOutUp');
-            ele1.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                //Download List
-                ele1.css("display", "none").removeClass('fadeOutUp');
-
-                //Download Form
-                ele2.css("display", "block").addClass('fadeInDown');
-                ele2.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-                    ele2.removeClass('fadeInDown');
-                });
-            });*/
             
             return false;
+        },
+        Go: function(callback){
+            var formData = jQuery( "#download_form" ).serialize();
+
+            jQuery(".loading").show();
+            jQuery.ajax({
+                type: "POST",
+                url: ajax_url,
+                data: formData,
+                dataType: "json",
+                success: function(data){
+                    if(data.status == "OK"){
+                        callback(true);
+                    }
+                    else{
+                        callback(false);
+                    }
+                }
+            }).done(function(){
+                jQuery(".loading").hide();
+            });
         }
     },
     PlayVideo: function(){
@@ -214,6 +223,9 @@ var App = {
 
             jQuery('#cms_type').val( cms_type );
             jQuery('.select_category').hide();
+
+            jQuery('.select_category ul li').removeClass('hide');
+            jQuery('.'+cms_type).addClass('hide');
         }
     },
     Animate: {
@@ -283,6 +295,20 @@ jQuery(document).ready(function($) {
     //Infinit scroll manual trigger setting
     jQuery(window).unbind('.infscr');
 
+    /* START: HEADER MENU STICKY */
+    jQuery("#header").sticky({ topSpacing: 0 });
+
+    jQuery(window).resize(function(){
+        if(jQuery(this).height() < 600 && jQuery(this).width() < 768){
+            jQuery("#header").unstick();
+        }
+        else if(jQuery(this).width() < 321){
+            jQuery("#header").unstick();
+        }
+    }).resize(); //trigger resize on page load
+    //END
+
+
     //Hide global element on click document.
     jQuery(document).on("click", "body", function(){
         App.Animate.globalHide( jQuery(".shy") );
@@ -295,9 +321,6 @@ jQuery(document).ready(function($) {
         event.stopPropagation();
     });
     
-    /* HEADER MENU STICKY */
-    jQuery("#header").sticky({ topSpacing: 0 });
-
 
     /* Bog top slider hover effect */
     if ( jQuery("#sticky_slider-nav-ul").find("li").length > 1 )
@@ -398,6 +421,7 @@ jQuery(document).ready(function($) {
     jQuery(document).on("submit", "#download_form", function(event){
         event.stopPropagation();
 
+
         var email = jQuery("#email").val();
         var password = jQuery("#password").val();
         var site_url = jQuery("#site_url").val();
@@ -415,7 +439,13 @@ jQuery(document).ready(function($) {
             App.Animate.error.show( jQuery(".d_site_url") );
             return false;
         }
-        return true;
+        App.Download.Go(function(success){
+            if(success){
+                jQuery("#signup_form").hide();
+                jQuery("#signup_thanks").show();
+            }
+        });
+        return false;
     });
     
     /*
@@ -435,7 +465,7 @@ jQuery(document).ready(function($) {
     });
     
    /*
-    * Show Donlaod error
+    * Show Downlaod error
     */
     jQuery(document).on("focus", "#email", function(){
         App.Animate.error.hide( jQuery(".d_email") );

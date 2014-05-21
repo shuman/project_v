@@ -12,6 +12,13 @@ function register_session(){
 add_action('init','register_session', 1);
 
 
+/**
+ * Include files
+ */
+include dirname(__FILE__) . '/include/widgets.php';
+include dirname(__FILE__) . '/include/custom_posts.php';
+
+
 function theme_scripts() {
 	/* Scripts */
 	wp_enqueue_script('easing', get_stylesheet_directory_uri() . '/js/jquery.easing.1.3.js');
@@ -76,70 +83,70 @@ add_action('optionsframework_custom_scripts', 'optionsframework_custom_scripts')
 
 function optionsframework_custom_scripts() { ?>
 
-<script type="text/javascript">
-jQuery(document).ready(function() {
+	<script type="text/javascript">
+	jQuery(document).ready(function() {
 
-	jQuery('#op_testimonial_posttype').change(function() {
-		var posttype = jQuery(this).val();
-		jQuery('#section-op_testimonial_postcategories').fadeOut(400);
-		jQuery('#section-op_testimonial_pages').fadeOut(400);
-		jQuery('#section-op_testimonial_type_posts').fadeOut(400);
-		if(posttype == "post"){
-  			jQuery('#section-op_testimonial_postcategories').fadeIn(400);
-		}
-		else if(posttype == "page"){
-  			jQuery('#section-op_testimonial_pages').fadeIn(400);
-		}
-		else if(posttype == "testimonial"){
-  			jQuery('#section-op_testimonial_type_posts').fadeIn(400);
-			
+		jQuery('#op_testimonial_posttype').change(function() {
+			var posttype = jQuery(this).val();
+			jQuery('#section-op_testimonial_postcategories').fadeOut(400);
+			jQuery('#section-op_testimonial_pages').fadeOut(400);
+			jQuery('#section-op_testimonial_type_posts').fadeOut(400);
+			if(posttype == "post"){
+	  			jQuery('#section-op_testimonial_postcategories').fadeIn(400);
+			}
+			else if(posttype == "page"){
+	  			jQuery('#section-op_testimonial_pages').fadeIn(400);
+			}
+			else if(posttype == "testimonial"){
+	  			jQuery('#section-op_testimonial_type_posts').fadeIn(400);
+				
+			}
+
+		});
+
+		jQuery('#example_showhidden').click(function() {
+	  		jQuery('#section-example_text_hidden').fadeToggle(400);
+		});
+
+		if (jQuery('#example_showhidden:checked').val() !== undefined) {
+			jQuery('#section-example_text_hidden').show();
 		}
 
 	});
-
-	jQuery('#example_showhidden').click(function() {
-  		jQuery('#section-example_text_hidden').fadeToggle(400);
-	});
-
-	if (jQuery('#example_showhidden:checked').val() !== undefined) {
-		jQuery('#section-example_text_hidden').show();
-	}
-
-});
-</script>
-<style type="text/css">
-	#optionsframework h4{
-		margin: 0;
-		display: inline-block;
-	}
-	#optionsframework p{
-		margin: 0 0 0 20px;
-		display: inline-block;
-		padding: 0;
-	}
-	#optionsframework .section-info{
-		background: #F1F1F1;
-		border-top: 1px solid #DDDDDD;
-		border-bottom: 1px solid #DDDDDD;
-		padding: 10px 10px;
-		margin: 20px 0 10px 0;
-	}
-	#optionsframework .section-editor h4{
-		float: left;
-		display: inline-block;
-		position: relative;
-		top: 20px;
-	}
-	#section-op_facebook,
-	#section-op_twitter,
-	#section-op_linkedin,
-	#section-op_vimeo,
-	#section-op_google_plus{
-		width: 45%;
-		display: inline-block;
-	}
-</style>
-<?php
+	</script>
+	<style type="text/css">
+		#optionsframework h4{
+			margin: 0;
+			display: inline-block;
+		}
+		#optionsframework p{
+			margin: 0 0 0 20px;
+			display: inline-block;
+			padding: 0;
+		}
+		#optionsframework .section-info{
+			background: #F1F1F1;
+			border-top: 1px solid #DDDDDD;
+			border-bottom: 1px solid #DDDDDD;
+			padding: 10px 10px;
+			margin: 20px 0 10px 0;
+		}
+		#optionsframework .section-editor h4{
+			float: left;
+			display: inline-block;
+			position: relative;
+			top: 20px;
+		}
+		#section-op_facebook,
+		#section-op_twitter,
+		#section-op_linkedin,
+		#section-op_vimeo,
+		#section-op_google_plus{
+			width: 45%;
+			display: inline-block;
+		}
+	</style>
+	<?php
 }
 
 
@@ -166,132 +173,11 @@ register_sidebar( array(
 
 
 
-/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	START :: CREATE A CUSTOM FAQ POST TYPE 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> */
-add_action('init', 'faq_custom_post_type_init');
-function faq_custom_post_type_init() 
-{
-  $labels = array(
-    'name' => _x('FAQ', 'post type general name'),
-    'singular_name' => _x('FAQ', 'post type singular name'),
-    'add_new' => _x('Add New Question', 'faq'),
-    'add_new_item' => __('Add New Question'),
-    'edit_item' => __('Edit Question'),
-    'new_item' => __('New Question'),
-    'all_items' => __('All Questions'),
-    'view_item' => __('View Question'),
-    'search_items' => __('Search Questions'),
-    'not_found' =>  __('No questions found'),
-    'not_found_in_trash' => __('No questions found in Trash'), 
-    'parent_item_colon' => '',
-    'menu_name' => 'FAQ'
-
-  );
-
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'publicly_queryable' => true,
-    'show_ui' => true, 
-    'show_in_menu' => true, 
-    'query_var' => true,
-    'rewrite' => true,
-    'capability_type' => 'post',
-    'has_archive' => false, 
-    'hierarchical' => false,
-    'menu_position' => null,
-    'supports' => array('title','editor','author')
-  ); 
-  register_post_type('faq',$args);
-}
-
-/* *****************************************************************************
-	ADD A TAXONOMY FOR USE WITH FAQ
-***************************************************************************** */
-add_action('init', 'faq_custom_taxonomy_type_init');
-function faq_custom_taxonomy_type_init() {
-	$labels = array(
-		'name' => _x( 'FAQ Category', 'taxonomy general name' ),
-		'singular_name' => _x( 'FAQ Category', 'taxonomy singular name' ),
-		'search_items' =>  __( 'Search FAQ Categories' ),
-		'popular_items' => __( 'Popular FAQ Categories' ),
-		'all_items' => __( 'All FAQ Categories' ),
-		'parent_item' => null,
-		'parent_item_colon' => null,
-		'edit_item' => __( 'Edit FAQ Category' ), 
-		'update_item' => __( 'Update FAQ Category' ),
-		'add_new_item' => __( 'Add New FAQ Category' ),
-		'new_item_name' => __( 'New FAQ Category Name' ),
-		'separate_items_with_commas' => __( 'Choose an appropriate FAQ Category for this question (one per question)' ),
-		'add_or_remove_items' => __( 'Add or remove FAQ Categories' ),
-		'choose_from_most_used' => __( 'Choose from the most used FAQ Categories' ),
-		'menu_name' => __( 'FAQ Categories' ),
-	); 
-	
-	register_taxonomy('faq_category','faq', array(
-		'hierarchical' => false,
-		'labels' => $labels,
-		'show_ui' => true,
-		'show_tagcloud' => false,
-        'hierarchical' => true,
-	));
-}  
-
-
-/* *****************************************************************************
-	ADMIN PAGE DEFAULT TEXT
-***************************************************************************** */
-// Change title text in editor
-function faq_custom_title_text( $title ){
-	if (function_exists ('get_current_screen')) {
-		$screen = get_current_screen();
-		if ( 'faq' == $screen->post_type ) {
-			$title = 'Enter question here';
-		}
-		return $title;
-	}
-}
-add_filter( 'enter_title_here', 'faq_custom_title_text' );
-
-// Add default content text 
-function faq_custom_content_text( $content ) {
-	if (function_exists ('get_current_screen')) {
-		$screen = get_current_screen();
-		if ( 'faq' == $screen->post_type ) {
-			$content = '';
-		}
-		return $content;
-	}
-}
-add_filter( 'default_content', 'faq_custom_content_text' );
-/* *****************************************************************************
-	END CUSTOM FAQ POST TYPE 
-***************************************************************************** */
-
 
 function new_excerpt_more( $more ) {
 	return '...';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-
-
-
-add_action( 'init', 'create_testimonial_post_type' );
-function create_testimonial_post_type() {
-	register_post_type( 'testimonial',
-		array(
-			'labels' => array(
-				'name' => __( 'Testimonials' ),
-				'singular_name' => __( 'Testimonial' )
-			),
-		'public' => true,
-		'has_archive' => true,
-		'supports' => array( 'title', 'editor', 'thumbnail' ),
-		)
-	);
-}
-
 
 
 function vtheme_comment($comment, $args, $depth) {
@@ -339,106 +225,6 @@ function vtheme_comment($comment, $args, $depth) {
 <?php
 }
 
-
-class Comment_Widget extends WP_Widget {
-
-	/**
-	 * Sets up the widgets name etc
-	 */
-	public function __construct() {
-		parent::__construct(
-			'comment_widget', // Base ID
-			__('Commented', 'vtheme'), // Name
-			array( 'description' => __( 'Commented Widget for Sidebar', 'vtheme' ), ) // Args
-		);
-	}
-
-	/**
-	 * Outputs the content of the widget
-	 *
-	 * @param array $args
-	 * @param array $instance
-	 */
-	public function widget( $args, $instance ) {
-		$title = apply_filters( 'widget_title', $instance['title'] );
-		$number = ( ! empty( $instance['number'] ) ) ? absint( $instance['number'] ) : 3;
-		if ( ! $number )
-			$number = 3;
-
-		echo $args['before_widget'];
-		if ( ! empty( $title ) ){
-			echo $args['before_title'] . $title . $args['after_title'];
-		}
-
-		$comments = get_comments( apply_filters( 'widget_comments_args', array(
-			'number'      => $number,
-			'status'      => 'approve',
-			'post_status' => 'publish'
-		) ) );
-
-		//echo '<pre>';
-		//print_r($comments);
-		//echo '</pre>';
-		if($comments):
-			foreach ($comments as $comment) {
-				$default_avatar = get_stylesheet_directory_uri() . '/images/author_avatar.png';
-				?>
-				<div class="comment_box">
-					<div class="cmt_pics"><?php echo get_avatar( $comment->comment_author_email, 65, $default_avatar, $comment->comment_author ); ?></div>
-					<a href="<?php echo get_permalink($comment->ID);?>"><h3><?php echo $comment->post_title;?></h3></a>
-					<div class="post_meta">
-						<span class="post_comments"><?php echo get_parent_comment_count($comment->ID); ?></span><!-- /post_comments -->
-						<span class="post_share"><?php echo get_child_comment_count($comment->ID); ?></span><!-- /post_share -->
-					</div><!-- /meta -->
-				</div>
-				<?php
-			}
-		endif;
-		echo $args['after_widget'];
-	}
-
-	/**
-	 * Outputs the options form on admin
-	 *
-	 * @param array $instance The widget options
-	 */
-	public function form( $instance ) {
-			$title = isset( $instance[ 'title' ] ) ? $instance[ 'title' ] : 'COMMENTED';
-			$limit = isset( $instance[ 'limit' ] ) ? $instance[ 'limit' ] : 3;
-		?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
-		</p>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:' ); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id( 'limit' ); ?>" name="<?php echo $this->get_field_name( 'limit' ); ?>" type="text" value="<?php echo esc_attr( $limit ); ?>">
-		</p>
-		<?php 
-	}
-
-	/**
-	 * Processing widget options on save
-	 *
-	 * @param array $new_instance The new options
-	 * @param array $old_instance The previous options
-	 */
-	public function update( $new_instance, $old_instance ) {
-		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
-		$instance['limit'] = ( ! empty( $new_instance['limit'] ) ) ? strip_tags( $new_instance['limit'] ) : 3;
-
-		return $instance;
-	}
-}
-/*
-add_action( 'widgets_init', function(){
-     register_widget( 'Comment_Widget' );
-});*/
-add_action('widgets_init',
-     create_function('', 'return register_widget("Comment_Widget");')
-);
-
 function theme_get_archives_link ( $link_html ) {
     global $wp;
     static $current_url;
@@ -481,6 +267,20 @@ function getsiteinfo(){
 	$output['status'] = 'OK';
 	$cms = array('wordpress', 'joomla', 'drupal', 'magento');
 	$output['cms'] = $cms[array_rand($cms)];
+
+	echo json_encode($output);
+	exit();	
+}
+
+
+add_action("wp_ajax_nopriv_get_download", "get_download");
+add_action("wp_ajax_get_download", "get_download");
+function get_download(){
+	header('Content-Type: application/json');
+
+	$output = array();
+
+	$output['status'] = 'OK';
 
 	echo json_encode($output);
 	exit();	

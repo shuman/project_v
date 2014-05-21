@@ -113,9 +113,10 @@
 			</ul><!-- /select_download -->
 		</div>
 		<div id="v_signUp_form" class="animated shy dropdown_box" style="display:none;">
-			<div class="v_signUp">
+			<div id="signup_form" class="v_signUp">
 				<h4>WHERE SHOULD WE SEND THE LINK?</h4>
 				<form method="post" id="download_form" action="">
+					<input type="hidden" name="action" value="get_download">
 					<div class="form-group">
 						<input type="text" name="email" id="email" class="input" placeholder="email@domain.com">
 						<span class="animated error hide d_email">Invalid Email</span>
@@ -128,9 +129,15 @@
 						<input type="text" name="site_url" id="site_url" placeholder="Your Site URL">
 						<span class="animated error hide d_site_url">Invalid Site URL</span>
 					</div><!-- /form-group -->
+					<img class="loading" src="<?php echo get_stylesheet_directory_uri();?>/images/loading_dot.gif" alt="" style="display:none;">
 					<input type="submit" name="submit" value="Send">
 				</form>
-			</div><!-- /v_signUp -->
+			</div><!-- v_signUp -->
+			<div id="signup_thanks" class="v_signUp" style="display:none;">
+				<img src="<?php echo get_stylesheet_directory_uri();?>/images/logo.png" alt="logo">
+				<h2>Congratulations</h2>
+				<p>Your download link was sent to your email. Don’t forget to check spam!</p>
+			</div>
 		</div>
 	</script>
 	

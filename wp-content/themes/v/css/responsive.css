@@ -79,12 +79,12 @@
 		max-width: 330px;
 	}
 
-	.footer_right #V_downLoad{
+	#download_bot #V_downLoad{
 	    top: -85px;
 	    right: 45px;
 	}
 
-	.footer_right #v_signUp_form{
+	#download_bot #v_signUp_form{
 	    top: -65px;
 	    right: 45px;
 	}
@@ -209,8 +209,12 @@
 	}
 
 	.blog_container{
+	}
+	
+	.post_navs{
 		margin-bottom: 40px;
 	}
+
 	.content_title{
 		padding: 0;
 	}
@@ -280,8 +284,25 @@
 		left: 219px;
 	}
 
+	#responsive_nav{
+		max-height: 100%;
+	}
 
-	.footer_right .dropdown_box{
+	#download_top{
+		position: relative;
+	}
+	#download_top .dropdown_box{
+		top: 0;
+		right: 0;
+		left: 15px;
+		position: relative;
+	}
+
+	#download_top .dropdown_box:after{
+		right: 265px;
+	}
+
+	#download_bot .dropdown_box{
     	top: -160px;
     	right: 47px;
 	}
@@ -483,16 +504,45 @@
 		width: 250px;
 	}
 
-	.footer_right .dropdown_box{
-    	right: 0px;
-    	width: 275px;
-	}
-	.footer_right #V_downLoad{
-	    top: -85px;
+	.dropdown_box h4{
+		font-size: 14px;
 	}
 
-	.footer_right #v_signUp_form{
-	    top: -84px;
+	#signup_thanks h2{
+		font-size: 25px;
+	}
+	#signup_thanks p, 
+	#footer #signup_thanks p{
+		font-size: 15px;
+	}
+	
+	#signup_thanks img{
+		margin-top: 25px;
+	}
+	
+	#download_top .dropdown_box:after{
+		right: 200px;
+	}
+
+	#download_top .dropdown_box{
+		right: 15px;
+    	width: 275px;
+	}
+	/* Bottom */
+	#download_bot .dropdown_box:after{
+		right: 125px;
+	}
+
+	#download_bot #V_downLoad{
+    	width: 275px;
+	    top: -85px;
+	    right: 0;
+	}
+
+	#download_bot #v_signUp_form {
+    	width: 275px;
+	    right: 0;
+	    top: -65px;
 	}
 }
 

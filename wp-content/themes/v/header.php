@@ -55,6 +55,7 @@
 													<input type="text" class="form-control input" name="site_url" id="s_url" placeholder="Your Site URL">
 													<span id="s_url_error" class="animated error hide">Invalid Site URL</span>
 													<input type="hidden" name="cms_type" id="cms_type" value="">
+													
 													<div class="selection hide">
 														<span class="select_btn"></span>
 														<span class="selected_cat"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></span>
@@ -63,10 +64,10 @@
 
 													<div class="select_category shy animated collapsed">
 														<ul>
-															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('wordpress')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
-															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('joomla')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
-															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('drupal')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
-															<li><a href="javascript:void(0)" onclick="App.SignUp.select_cms('magento')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
+															<li class="wordpress"><a href="javascript:void(0)" onclick="App.SignUp.select_cms('wordpress')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_wordpress.png"></a></li>
+															<li class="joomla"><a href="javascript:void(0)" onclick="App.SignUp.select_cms('joomla')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_joomla.png"></a></li>
+															<li class="drupal"><a href="javascript:void(0)" onclick="App.SignUp.select_cms('drupal')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_drupal.png"></a></li>
+															<li class="magento"><a href="javascript:void(0)" onclick="App.SignUp.select_cms('magento')"><img src="<?php echo get_stylesheet_directory_uri();?>/images/icon_magento.png"></a></li>
 														</ul>
 													</div>
 													<div class="progress_bar hide"><span id="progress_percent" style="width:0%;"></span></div>
@@ -76,7 +77,7 @@
 
 											<li class="step2 animated hide">
 													<div class="form-group">
-														<input type="text" class="form-control input" name="s_email" id="s_email" placeholder="Username">
+														<input type="text" class="form-control input" name="s_email" id="s_email" placeholder="Email">
 														<span id="s_email_error" class="animated error hide">Invalid Email</span>
 														<input type="password" class="form-control input" name="password" id="s_password" placeholder="Password">
 														<span id="s_password_error" class="animated error hide p_error">Invalid Password</span>

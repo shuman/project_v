@@ -175,10 +175,8 @@ input.form-control:focus,
 input:focus,
 select:focus,
 textarea:focus{
-    box-shadow: 0 0 0px #18bcb6 inset;
     border-color: #18bcb6;
 }
-
 
 ::-webkit-input-placeholder { color: #ababab; }
 :-moz-placeholder { color: #ababab; }
@@ -395,10 +393,39 @@ textarea:focus{
     background: url(../images/download_icon_magento.png) no-repeat left center;
 }
 
+#signup_form{
+    height: 240px;
+}
+#signup_form .loading{
+    position: absolute;
+    bottom: -15px;
+    right: 0;
+}
+
+#signup_thanks{
+    height: 240px;
+    text-align: center;
+}
+#signup_thanks img{
+    max-width: 70px;
+    max-height: 65px;
+}
+
+#signup_thanks h2{
+    margin: 40px auto 20px;
+    font-size: 30px;
+    color: #0ea29d;
+}
+#signup_thanks p,
+#footer  #signup_thanks p{
+    color: #000;
+    line-height: normal;
+}
+
+
 .v_signUp{
     position: relative;
     margin: 15px 0;
-    padding-bottom: 40px;
 }
 
 .v_signUp .form-group{
@@ -986,7 +1013,9 @@ textarea:focus{
 
 .select_category{
     background: none repeat scroll 0 0 #F4F4F4;
-    border: 1px solid #ECECEC;
+    border-right: 1px solid #ECECEC;
+    border-bottom: 1px solid #ECECEC;
+    border-left: 1px solid #ECECEC;
     padding: 0;
     position: absolute;
     right: 5px;
@@ -1002,26 +1031,50 @@ textarea:focus{
 }
 
 .select_category ul{
-    padding: 0;
     margin: 0;
     width: auto;
+    padding: 8px 0 5px;
 }
 .select_category ul li{
     float: none;
     display: block;
     width: 100%;
+    padding: 0 5px;
 }
 
 .select_category ul li a{
-    padding: 5px 15px 10px;
+    height: 38px;
     display: block;
-    text-align: center;
+    text-align: left;
+    position: relative;
+    padding-top: 5px;
+    padding-left: 7px;
 }
+
+
+.select_category li a:after{
+    border-bottom: 3px solid #e6e6e6;
+    bottom: 0;
+    clear: both;
+    content: " ";
+    height: 41px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.select_category li:last-child a:after{
+    border-bottom: none;
+}
+
+.select_category li a:hover:after{
+    border: 3px solid #e6e6e6;
+}
+
 
 .select_category ul li a img{
     width: 25px;
     height: 25px;
-    opacity: 0.6;
 }
 
 .select_category ul li a:hover img{
@@ -1847,15 +1900,15 @@ span.tm_top_arrow p{
     position: relative;
 }
 
-.footer_right #V_downLoad{
+#download_bot #V_downLoad{
     top: -180px;
 }
 
-.footer_right #v_signUp_form{
+#download_bot #v_signUp_form{
     top: -160px;
 }
 
-.footer_right .dropdown_box:after{
+#download_bot .dropdown_box:after{
     background: url("../images/down_arrow_bot.png") no-repeat scroll center top rgba(0, 0, 0, 0);
     top: auto;
     bottom: -15px;
@@ -2187,9 +2240,6 @@ span.tm_top_arrow p{
     left: -25px;
 }
 
-input.form-control:focus, input:focus, select:focus, textarea:focus {
-    border: 1px solid #0ea29d;
-}
 
 .testimonial .owner_pic .frame { 
     width:100%; 
