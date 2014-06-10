@@ -110,6 +110,8 @@ var App = {
             jQuery("#site_url").val('');
             jQuery(".error").addClass("hide");
 
+            jQuery("#plugin_type").val(type);
+            
             var ele1 = jQuery('#V_downLoad');
             var ele2 = jQuery('#v_signUp_form');
             ele1.hide();
@@ -350,10 +352,7 @@ jQuery(document).ready(function($) {
             return false;
         }
 
-        ele.css("display", "block").addClass('fadeInDown');
-        ele.one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
-            ele.removeClass('fadeInDown');
-        });
+        ele.css("display", "block");
         return false;
     });
 
@@ -532,7 +531,7 @@ jQuery(document).ready(function($) {
         jQuery(".load_more").hide();
         setTimeout(function(){
             jQuery(".load_more").show();
-        }, 5000);
+        }, 3000);
     });
 
 

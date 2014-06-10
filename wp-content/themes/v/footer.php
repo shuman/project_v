@@ -116,6 +116,7 @@
 			<div id="signup_form" class="v_signUp">
 				<h4>WHERE SHOULD WE SEND THE LINK?</h4>
 				<form method="post" id="download_form" action="">
+					<input type="hidden" name="plugin_type" id="plugin_type" value="">
 					<input type="hidden" name="action" value="get_download">
 					<div class="form-group">
 						<input type="text" name="email" id="email" class="input" placeholder="email@domain.com">

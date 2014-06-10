@@ -58,11 +58,11 @@
 				            </div><!--//carousel-inner-end-->
 				            <div class="slider_controls">
 								<a class="slider_nav_left" onclick="App.BlogStickySlider.SlidePrev()" href="javascript:void(0)" data-slide="prev">
-                  <span class="arrow"></span>
-                </a>
+				                	<span class="arrow"></span>
+				                </a>
 								<a class="slider_nav_right" onclick="App.BlogStickySlider.SlideNext()" href="javascript:void(0)" data-slide="next">
-                  <span class="arrow"></span>
-                </a>
+				                	<span class="arrow"></span>
+				                </a>
 							</div>
 				        </div><!--//carousel-end-->
 					</div><!-- /slide -->

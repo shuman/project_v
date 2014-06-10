@@ -171,11 +171,15 @@ input[type="submit"]:hover,
     outline: none;
 }
 
+
 input.form-control:focus,
 input:focus,
 select:focus,
 textarea:focus{
     border-color: #18bcb6;
+    border: 0 none;
+    outline: 1px solid #0ea29d;
+    box-shadow: none;
 }
 
 ::-webkit-input-placeholder { color: #ababab; }
@@ -1047,14 +1051,14 @@ textarea:focus{
     display: block;
     text-align: left;
     position: relative;
-    padding-top: 5px;
+    padding-top: 8px;
     padding-left: 7px;
 }
 
 
 .select_category li a:after{
-    border-bottom: 3px solid #e6e6e6;
-    bottom: 0;
+    border-top: 3px solid #e6e6e6;
+    top: 0;
     clear: both;
     content: " ";
     height: 41px;
@@ -1063,9 +1067,6 @@ textarea:focus{
     width: 100%;
 }
 
-.select_category li:last-child a:after{
-    border-bottom: none;
-}
 
 .select_category li a:hover:after{
     border: 3px solid #e6e6e6;
@@ -2130,6 +2131,7 @@ span.tm_top_arrow p{
     max-width: 100%;
     max-height: 530px;
 }
+
 
 .post_navs a{
     display: block;
